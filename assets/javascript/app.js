@@ -6,7 +6,7 @@ $(document).ready(function (){
             //Clearing whatever user typed
             $('#usersearch').val('')
 
-            let query = "http://dictionaryapi.com/api/v3/references/collegiate/json/"+userSearch+"?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
+            let query = "https://dictionaryapi.com/api/v3/references/collegiate/json/"+userSearch+"?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
        
         
     
