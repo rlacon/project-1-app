@@ -1,33 +1,58 @@
-$(document).ready(function (){
-    
-     $("#userD").on('click', function () {
-            event.preventDefault()
-            let userDefine = $('#userDefine').val().trim().toLowerCase()
-            //Clearing whatever user typed
-            $('#userDefine').val('')
-            $('#definition').empty()
-            let query = "https://dictionaryapi.com/api/v3/references/collegiate/json/"+userDefine+"?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
-       
+
+var config = {
+    apiKey: "AIzaSyBStdtgAvdOPQ8fczEWuM4ArfBIK_64rZo",
+    authDomain: "writeunread.firebaseapp.com",
+    databaseURL: "https://writeunread.firebaseio.com",
+    projectId: "writeunread",
+    storageBucket: "",
+    messagingSenderId: "667609225561",
+    appId: "1:667609225561:web:d35676707f2d51c6"
+};
+
+firebase.initializeApp(config);
+
+//let database = firebase.database()
+
+
+
+
+$(document).ready(function () {
+
+    $("#userD").on('click', function () {
+        event.preventDefault()
+        let userDefine = $('#userDefine').val().trim().toLowerCase()
+
+
+        let query = "https://dictionaryapi.com/api/v3/references/collegiate/json/" + userDefine + "?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
+      
+        $('#definethes').append('<p id=definition><strong></strong></p>')
+        $('#word').text(userDefine).css('font-size', '18px')
+        $('#userDefine').val('')
         
-    
-    
-    $.ajax({
-        url:query,
-        method: "GET"
-    }).then(function (response){
-        console.log(response)
-        let def = response[0].shortdef.map(item => item )
-        console.log(def)
-       $("#definition").append('<h5>' + def.join(' ') + '</h5>')
-    }) 
-})
-    $('#userT').on('click', function() {
+        
+
+
+        $.ajax({
+            url: query,
+            method: "GET"
+        }).then(function (response) {
+
+            let def = response[0].shortdef.map(item => item)
+            let type = response[0].fl
+            console.log(def)
+            $('#word').append(' : ' + type)
+            $('#definition').text(def.join(' '))
+        })
+    })
+    $('#userT').on('click', function () {
         event.preventDefault()
         let userThes = $('#userThes').val().trim().toLowerCase()
+        
+        $('#definethes').append('<p id=synonym><strong></strong></p>')
         $('#userThes').val('')
-        $('#thesaurus').empty()
+       
 
-        let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/"+userThes+"?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
+        let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/" + userThes + "?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
 
         $.ajax({
             url: query_2,
@@ -37,12 +62,17 @@ $(document).ready(function (){
 
             let thes = response[0].meta.syns[0].map(item => item)
 
-            console.log(thes)
+           
+           
+            $('#synonym').text(thes.join(' , '))
 
-            $('#synonyms').append('<h5>' + thes.join(' , ') + '</h5>')
 
 
-            
+
+
+
+
+
         })
     })
 })
