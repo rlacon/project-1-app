@@ -25,8 +25,10 @@ $(document).ready(function () {
 
         let query = "https://dictionaryapi.com/api/v3/references/collegiate/json/" + userDefine + "?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
       
-        $('#definethes').append('<p id=definition><strong></strong></p>')
-        $('#word').text(userDefine).css('font-size', '18px')
+        $('#definethes').append('<p class=border border-success id=definition><strong></strong></p>')
+        $('#definition').before('<h3 id=wordDef>' + userDefine + '</h3>')
+       
+        $('#wordDef').text(userDefine)
         $('#userDefine').val('')
         
         
@@ -40,7 +42,7 @@ $(document).ready(function () {
             let def = response[0].shortdef.map(item => item)
             let type = response[0].fl
             console.log(def)
-            $('#word').append(' : ' + type)
+            $('#wordDef').append(' : ' + type)
             $('#definition').text(def.join(' '))
         })
     })
@@ -48,10 +50,10 @@ $(document).ready(function () {
         event.preventDefault()
         let userThes = $('#userThes').val().trim().toLowerCase()
         
-        $('#definethes').append('<p id=synonym><strong></strong></p>')
+        $('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
+        $('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
         $('#userThes').val('')
-       
-
+      
         let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/" + userThes + "?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
 
         $.ajax({
@@ -65,9 +67,8 @@ $(document).ready(function () {
            
            
             $('#synonym').text(thes.join(' , '))
-
-
-
+            $('#wordThes').append(' :synonyms')
+            
 
 
 
