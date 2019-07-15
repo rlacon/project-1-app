@@ -18,8 +18,13 @@ firebase.initializeApp(config);
 
 
 $(document).ready(function () {
-    let counter  = 0;
 
+    $('#clear').on('click', () =>{
+        $('#definitions').empty()
+
+    })
+
+let counter  = 0;
     $("#userD").on('click', () => {
         counter++
 
@@ -33,7 +38,7 @@ $(document).ready(function () {
 
         let list = $('#definitions').css({'font-size' : '24px'})
         
-        list.append('<li id=def_' +counter+'>' + item + '</li>').css({ 'border': '1px solid black', 'list-style': 'none', 'font-weight':'bold'})
+        list.append('<li id=def_' +counter+'>' + item + '</li>').css({ 'border': '1px solid black', 'list-style': 'none', 'font-weight':'bold', 'float':'left'})
         
         $('#userDefine').val('')
         
@@ -62,13 +67,16 @@ $(document).ready(function () {
     })
     $('#userT').on('click', () => {
         event.preventDefault()
-        let userThes = $('#userThes').val().trim().toLowerCase()
-        
+        counter++
+        let item = $('#userThes').val().trim().toLowerCase()
+        let list = $('#thesaurus').css({'font-size' : '24px'})
+        $('#userThes').val('')
+        list.append('<li id=thes_'+counter+'>'+ item +'</li>').css({ 'border': '1px solid black', 'list-style': 'none', 'font-weight':'bold', 'float':'left'})
       //$('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
       //$('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
       //$('#userThes').val('')
       
-        let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/" + userThes + "?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
+        let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/" + item + "?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
 
         $.ajax({
             url: query_2,
@@ -78,7 +86,7 @@ $(document).ready(function () {
 
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
-           
+           $('#thes_' + counter).append(': ' + thes)
            
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
