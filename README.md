@@ -12,6 +12,17 @@ A app for those who wish to write their own stories, with a little guidance. Thi
 * To provide story outlines as a starting point to educate beginner writers on literary elements and assist with idea generation.
 
 4. Identify and prioritize essential user stories (limit this to 3 or fewer)?
+
 * As a user, I want to get ideas for a story to write about with a theme of my choosing.
+    1. Click "New Story" and select one of the genres.
+    2. Move to the writing screen to see the results in your outline.
+    3. Edit the text inside those boxes.
+    
 * As a user, I want to track the level of effort I put into my writing through the word count.
+    1. Type words on the document to track the total word count.
+    2. Display the word count in the table.
+    3. The total word count will correspond to the day of the week.
+    
 * As a user, I want to store and submit my story to the public for people to read.
+    1. Log in to the app through the Medium API.
+    2. Click submit on the text document to publish the story on a Medium profile.
