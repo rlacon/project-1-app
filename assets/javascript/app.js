@@ -17,9 +17,9 @@ firebase.initializeApp(config);
       
 
 
-$(document).ready(function () {
+$(document).ready(() => {
 
-    $('#clear').on('click', () =>{
+    $('#clear').on('click', () => {
         $('#definitions').empty()
 
     })
@@ -34,13 +34,17 @@ let counter  = 0;
 
         let query = "https://dictionaryapi.com/api/v3/references/collegiate/json/" + item + "?&key=badf0fb9-2111-4efc-99f2-e6ac5ada80bd"
         //definethes
-       
+        //
 
         let list = $('#definitions').css({'font-size' : '24px'})
         
         list.append('<li id=def_' +counter+'>' + item + '</li>').css({ 'border': '1px solid black', 'list-style': 'none', 'font-weight':'bold', 'float':'left'})
         
         $('#userDefine').val('')
+
+        $('#def_' + counter).on('click', () => {
+            $('#def_' + counter).empty()
+        })
         
         //$('#definethes').append('<p class=border border-success id=definition><strong></strong></p>')
         //$('#definition').before('<h3 id=wordDef>' + userDefine + '</h3>')
@@ -54,7 +58,7 @@ let counter  = 0;
         $.ajax({
             url: query,
             method: "GET"
-        }).then(function (response) {
+        }).then( (response) => {
 
             let def = response[0].shortdef.map(item => item)
             let type = response[0].fl
