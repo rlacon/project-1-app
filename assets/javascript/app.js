@@ -1,4 +1,4 @@
-
+//Database to store word count in table.
 var config = {
     apiKey: "AIzaSyBStdtgAvdOPQ8fczEWuM4ArfBIK_64rZo",
     authDomain: "writeunread.firebaseapp.com",
@@ -87,7 +87,7 @@ let counter  = 0;
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
            $('#thes_' + counter).append(': ' + thes)
-           
+            
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
             
@@ -98,4 +98,9 @@ let counter  = 0;
 
         })
     })
+
+
+
+
+    
 })
