@@ -10,7 +10,8 @@
     <title>Project-1</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/word-count-chart.js"></script>
+    <script scr="assets/javascript/app.js"></script>
 </head>
 
 <body>
@@ -22,44 +23,50 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">blahblah</a>
-                <a class="nav-item nav-link" href="#">blahblah</a>
-                <a class="nav-item nav-link" href="#">blahblah</a>
+                <a class="nav-item nav-link active" href="dashboard.html">Dashboard <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="genre.html">Ideas</a>
+                <a class="nav-item nav-link" href="story.html"> Text</a>
             </div>
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col-sm-7">
-            <div class="jumbotron">
-                <h1 class="display-4">Good Morning, USERNAME!</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                    attention
-                    to
-                    featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.
-                </p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Start writing!</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-sm 4">
-            <script type="text/javascript">
-                var queryURL = "https://favqs.com/api/qotd";
-            
-                $.ajax({
-                  url: queryURL,
-                  method: "GET"
-                }).then(function(response) {
-                  console.log(response);
-                });
-              </script>
-            
-           <a href="#" class="btn btn-primary">New quote</a>
-        </div>
+
+
+    CJ Brown [2:22 PM]
+<div class="row">
+       <div class="col-sm-7">
+           <div class="jumbotron">
+               <h1 class="display-4">Good Morning, USERNAME!</h1>
+               <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                   attention
+                   to
+                   featured content or information.</p>
+               <hr class="my-4">
+               <p>It uses utility classes for typography and spacing to space content out within the larger container.
+               </p>
+               <p class="lead">
+                   <a class="btn btn-primary btn-lg" href="#" role="button">Start writing!</a>
+               </p>
+           </div>
+       </div>
+       <div class="col-sm 4">
+           <script type="text/javascript">
+               var queryURL = "https://favqs.com/api/qotd";
+
+               $.ajax({
+                 url: queryURL,
+                 method: "GET"
+               }).then(function(response) {
+                 console.log(response);
+               });
+             </script>
+
+          <a href="#" class="btn btn-primary">New quote</a>
+       </div>
+    </div>
+
+
 
 
     
@@ -67,10 +74,11 @@
 
     </div>
 
+
     <div class="container">
         <h2>Your stories: </h2>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Writing 1</h5>
@@ -79,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Writing 2</h5>
@@ -88,9 +96,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Writing 3</h5>
@@ -99,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Writing 4</h5>
@@ -109,46 +115,34 @@
                 </div>
             </div>
         </div>
+
         <br>
         <h3>Statistics</h3>
         <table class="table">
             <thead class="thead-dark">
-              <tr>
-                <th scope="col">Monday</th>
-                <th scope="col">Tuesday</th>
-                <th scope="col">Wednesday</th>
-                <th scope="col">Thursday</th>
-                <th scope="col">Friday</th>
-                <th scope="col">Saturday</th>
-                <th scope="col">Sunday</th>
-              </tr>
+                <tr>
+                    <th scope="col">Monday</th>
+                    <th scope="col">Tuesday</th>
+                    <th scope="col">Wednesday</th>
+                    <th scope="col">Thursday</th>
+                    <th scope="col">Friday</th>
+                    <th scope="col">Saturday</th>
+                    <th scope="col">Sunday</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">____words</th>
-                <td>___words</td>
-                <td>___words</td>
-                <td>___words</td>
-                <td>___words</td>
-                <td>___words</td>
-                <td>___words</td>
-              </tr>
+                <tr>
+                    <th scope="row" id="mondayBox"></th>
+                    <td id="tuesdayBox"></td>
+                    <td id="wednesdayBox"></td>
+                    <td id="thursdayBox"></td>
+                    <td id="fridayBox"></td>
+                    <td id="saturdayBox"></td>
+                    <td id="sundayBox"></td>
+                </tr>
             </tbody>
-          </table>
-          
-        
-        
-        
-
-
-
+        </table>
     </div>
-
-
-
-
-
-
 </body>
 
 </html>
