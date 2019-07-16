@@ -10,7 +10,8 @@
     <title>Project-1</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/word-count-chart.js"></script>
+    <script scr="assets/javascript/app.js"></script>
 </head>
 
 <body>
@@ -22,14 +23,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Text</a>
-                <a class="nav-item nav-link" href="#">Ideas</a>
+                <a class="nav-item nav-link active" href="dashboard.html">Dashboard <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="genre.html">Ideas</a>
+                <a class="nav-item nav-link" href="story.html"> Text</a>
             </div>
         </div>
     </nav>
 
-    
+
     <div class="jumbotron">
         <h1 class="display-4">Good Morning, USERNAME!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
@@ -41,8 +43,6 @@
         </p>
 
     </div>
-
-
 
     <div class="container">
         <h2>Your stories: </h2>
@@ -84,47 +84,34 @@
                 </div>
             </div>
         </div>
-    
+
         <br>
         <h3>Statistics</h3>
         <table class="table">
             <thead class="thead-dark">
-              <tr>
-                <th scope="col">Monday</th>
-                <th scope="col">Tuesday</th>
-                <th scope="col">Wednesday</th>
-                <th scope="col">Thursday</th>
-                <th scope="col">Friday</th>
-                <th scope="col">Saturday</th>
-                <th scope="col">Sunday</th>
-              </tr>
+                <tr>
+                    <th scope="col">Monday</th>
+                    <th scope="col">Tuesday</th>
+                    <th scope="col">Wednesday</th>
+                    <th scope="col">Thursday</th>
+                    <th scope="col">Friday</th>
+                    <th scope="col">Saturday</th>
+                    <th scope="col">Sunday</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row" id="mondayBox"></th>
-                <td id="tuesdayBox"></td>
-                <td id="wednesdayBox"></td>
-                <td id="thursdayBox"></td>
-                <td id="fridayBox"></td>
-                <td id="saturdayBox"></td>
-                <td id="sundayBox"></td>
-              </tr>
+                <tr>
+                    <th scope="row" id="mondayBox"></th>
+                    <td id="tuesdayBox"></td>
+                    <td id="wednesdayBox"></td>
+                    <td id="thursdayBox"></td>
+                    <td id="fridayBox"></td>
+                    <td id="saturdayBox"></td>
+                    <td id="sundayBox"></td>
+                </tr>
             </tbody>
-          </table>
-          
-        
-        
-        
-
-
-
+        </table>
     </div>
-
-
-
-
-
-
 </body>
 
 </html>
