@@ -17,6 +17,7 @@ var firebaseConfig = {
     let found = str.match(regex)
     console.log(found.length)
     //$('#data').text(found.length) 
+    $("#")
 }
 
 // code to get the word count into the table in the dashboard. 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project-1</title>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+</head>
+
+<body>
+    <nav>
+
+    </nav>
+
+    <!-- Thesaurus definition area -->
+    <div class="container thesaurusContainer" id="definethes">
+        <div class="row">
+            <div class="offset-3 col-9">
+                <ul id="thesaurus"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thesaurus text field and Word Count -->
+    <div class="container">
+        <div class="row">
+            <div class="offset-3 col-7">
+                <form class="form-inline d-inline" id="formsubmit">
+                    <input id="userThes" class="form-control sm-5" placeholder="Type in a word" type="text">
+                    <button class="btn btn-dark" id="userT" type="submit">Thesaurus</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <p id="word-count-text">0 words</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="container storyArea" role="main">
+        <div class="row">
+
+            <!-- Outline section -->
+            <div class="col-3">
+                <div class="card mb-3">
+                    <div class="card-header">Setting</div>
+                    <div class="card-body text-primary">
+                        <textarea id="settingField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">First Plot Point</div>
+                    <div class="card-body text-primary">
+                        <textarea id="firstPlotPointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">Midpoint</div>
+                    <div class="card-body text-primary">
+                        <textarea id="midpointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">Climax</div>
+                    <div class="card-body text-primary">
+                        <textarea id="climaxField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">Resolution</div>
+                    <div class="card-body text-primary">
+                        <textarea id="resolutionField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Story section -->
+            <div class="col-9">
+                <textarea id="storyField" name="message" class="form-control" placeholder="Write your story here..."
+                    rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
