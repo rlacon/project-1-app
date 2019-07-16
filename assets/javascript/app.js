@@ -24,35 +24,40 @@ $('#word-count-text').text(found.length + ' words')
 
 
     //------Genre
-    function getGenre(setting, plotOne, midPoint, climax) {
+    function getGenre(setting, plotOne, midPoint, climax, resolution) {
         
         this.setting = setting;
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
+        this.resolution = resolution
         
     }
     //These objects are converted into arrays.
     let action = new getGenre(
-        'A desolate wasteland',
-        'A lone man struggles to make his way through the wastes in search of his estranged family', 
-        'Lone man meets enemy', 
-        'Man defeats battle in close battle that leaves him scarred mentally and physically')
+        'Think about a wasteland of some form, urban environments, rural communities, war-torn areas etc',
+        'A seemingly invulnerable central character should be introduced, the kind that bullets never seem to hit', 
+        'Tension building: Central character meets an enemy, rival, foe of some kind', 
+        'Climax: the tipping point of the story where the main character defeats the villain typically',
+        'The resolution occurs when the villain dies or is defeated somehow, in which the main character\'s issues are solved. Tension is no longer present')
     let horror = new getGenre(
-        'A haunted mansion',
-        'A woman receives a message from someone who she thinks is still alive',
-        'Woman goes to investigate mysterious message',
-        'Woman encounters and confronts evil that exists within the mansion')
+        'Think haunted mansion, cemetary, a lab where vile experiments are performed, small quiet towns, ghost towns',
+        'The first act sets up the character or characters in question, usually something disturbing happens at some point to get the rest of the story going',
+        'Tension building, confronting whatever supernatural entity or event has taken place, the characters should seem weak and vulnerable to whatever is happening',
+        'Final confrontation with source of horror that occurs in the story',
+        'Character could live or die, or some other strange or horrifying outcome, story could have a bleak ending or a happy one to ease the previous tension')
     let scifi = new getGenre(
-        'A derelict spaceship', 
-        'An astronaut wakes up in stasis to find hes the lone survivor on a mining vessel',
-        'He discovers can alien force has massacred his crew and left him alive, but for what reason?',
-        'Discovers reason, conflict resolution')
+        'Think of a derelict spaceship, laboratory, anywhere with science vibes', 
+        'Character or characters are introduced, usually scientists, astronauts, explorers, roboticists',
+        'Introduce a villain, mistake on the characters part that leads to an accident, AI going out of control etc',
+        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story',
+        'Scifi stories tend to end in a variety of different ways, generally they have obscure endings where the ending is left up to the viewer\'s imagination')
     let mystery = new getGenre(
-        'Rural America, 1930',
-        'A man who does not age seeks to find out why after being alive for more than 200 years',
-        'He discovers one of his family members was a witch and cursed him with immortality',
-        'Resolves the immortality and finally dies')
+        'Think of a gathering among friends, law enforcement personell, a stranger who emerges suddenly from nowhere',
+        'Introduction of either central character or several',
+        'Event can occur at this point that is unexplainable, character\'s then seek to uncover the reason',
+        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',
+        'Readers want to know what happened to the characters, or you could leave it murky and leave it up to them to decide.')
        
       
       console.log(action.plotOne)
@@ -103,6 +108,7 @@ $('#word-count-text').text(found.length + ' words')
             $('#loop-info-2').text(values[1])
             $('#loop-info-3').text(values[2])
             $('#loop-info-4').text(values[3])
+            $('#loop-info-5').text(values[4])
             
         }
     }
