@@ -30,20 +30,42 @@
         </div>
     </nav>
 
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="jumbotron">
+                <h1 class="display-4">Good Morning, USERNAME!</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                    attention
+                    to
+                    featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.
+                </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Start writing!</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-sm 4">
+            <script type="text/javascript">
+                var queryURL = "https://favqs.com/api/qotd";
+            
+                $.ajax({
+                  url: queryURL,
+                  method: "GET"
+                }).then(function(response) {
+                  console.log(response);
+                });
+              </script>
+            
+           <a href="#" class="btn btn-primary">New quote</a>
+        </div>
+
+
     
-    <div class="jumbotron">
-        <h1 class="display-4">Good Morning, USERNAME!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Create a new story!</a>
-        </p>
+  
 
     </div>
-
-
 
     <div class="container">
         <h2>Your stories: </h2>
