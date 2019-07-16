@@ -1,5 +1,3 @@
-$(document).ready {
-
 
 var firebaseConfig = {
     apiKey: "AIzaSyCetbRyR3StVbp6jLMRDqliRvo6u5TPCpk",
@@ -13,44 +11,58 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-//   getWordCount = (str) => {
-//     let regex = /\S+/g;
-//     let found = str.match(regex)
-//     console.log(found.length);
-// }
 
-// code to get the word count into the table in the dashboard. 
+let database = firebase.database();
+
+
+
+/*
+getWordCount = (str) => {
+    let regex = /\S+/g;
+    let found = str.match(regex)
+    console.log(found.length)
+  
+  $('#data').text(found.length)
+}
+
+*/
+
+
+
+
 
 database.ref().on('child_added', function (snapshot) {
-    var dayOfTheWeek = childSnapshot.val().day;
-    var wordCount = childSnapshot.val().wordCount;
 
-    if (dayOfTheWeek === "Sunday") {
-        var prevCount = parseInt($("#sundayBox").text());
+    let dayOfWeek = childSnapshot.val().day;
+    let wordCount = childSnapshot.val().wordCount;
+
+    if (dayOfWeek === "Sunday") {
+        let prevCount = parseInt($("#sundayBox").text());
         $("#sundayBox").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Monday") {
-        var prevCount = parseInt($("#mondayBox").text());
+    else if (dayOfWeek === "Monday") {
+        let prevCount = parseInt($("#mondayBox").text());
         $("#mondayBox").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Tuesday") {
-        var prevCount = parseInt($("#tuesdayBox").text());
+    else if (dayOfWeek === "Tuesday") {
+        let prevCount = parseInt($("#tuesdayBox").text());
         $("#tuesdayBox").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Wednesday") {
-        var prevCount = parseInt($("#wednesdayBox").text());
+    else if (dayOfWeek === "Wednesday") {
+        let prevCount = parseInt($("#wednesdayBox").text());
         $("#wednesdayBox").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Thursday") {
-        var prevCount = parseInt($("#thursdayBox").text());
+    else if (dayOfWeek === "Thursday") {
+        let prevCount = parseInt($("#thursdayBox").text());
         $("#thursdayBox").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Friday") {
-        var prevCount = parseInt($("#fridayBox").text());
+    else if (dayOfWeek === "Friday") {
+        let prevCount = parseInt($("#friday").text());
         $("#friday").text(prevCount += parseInt(wordCount));
     }
-    else if (dayOfTheWeek === "Saturday") {
-        var prevCount = parseInt($("#saturdayBox").text());
+    else if (dayOfWeek === "Saturday") {
+        let prevCount = parseInt($("#saturdayBox").text());
+
         $("#saturdayBox").text(prevCount += parseInt(wordCount));
     }
 })
