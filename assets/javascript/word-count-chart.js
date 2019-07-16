@@ -1,5 +1,23 @@
+$(document).ready {
 
+var firebaseConfig = {
+    apiKey: "AIzaSyCetbRyR3StVbp6jLMRDqliRvo6u5TPCpk",
+    authDomain: "write-haven-d0cda.firebaseapp.com",
+    databaseURL: "https://write-haven-d0cda.firebaseio.com",
+    projectId: "write-haven-d0cda",
+    storageBucket: "",
+    messagingSenderId: "379171859122",
+    appId: "1:379171859122:web:c46c36b048700911"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
+  getWordCount = (str) => {
+    let regex = /\S+/g;
+    let found = str.match(regex)
+    console.log(found.length)
+    //$('#data').text(found.length) 
+}
 
 // code to get the word count into the table in the dashboard. 
 
@@ -36,3 +54,4 @@ database.ref().on('child_added', function (snapshot) {
         $("#saturdayBox").text(prevCount += parseInt(wordCount));
     }
 })
+}
