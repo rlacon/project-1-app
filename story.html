@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project-1</title>
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
@@ -31,57 +32,49 @@
             <div class="offset-3 col-7">
                 <form class="form-inline d-inline" id="formsubmit">
                     <input id="userThes" class="form-control sm-5" placeholder="Type in a word" type="text">
-                    <button class="btn btn-dark" id="userT" type="submit">Thesaurus</button>
+                    <button class="btn btn-dark" id="userT" type="submit">Use Thesaurus</button>
                 </form>
             </div>
             <div class="col-2">
-                <p id="word-count-text">0 words</p>
-            </div>
+                    <button class="btn" id="saveStory" type="submit">Save Story</button>
+                </div>
         </div>
     </div>
 
     <!-- Main content area -->
-    <div class="container storyArea" role="main">
+    <div class="container mainContent" role="main">
         <div class="row">
 
             <!-- Outline section -->
             <div class="col-3">
+                <p><strong>Setting</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Setting</div>
                     <div class="card-body text-primary">
                         <textarea id="settingField" name="message" class="form-control"
                             placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
+                <p><strong>First Plot Point</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">First Plot Point</div>
                     <div class="card-body text-primary">
                         <textarea id="firstPlotPointField" name="message" class="form-control"
                             placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
+                <p><strong>Midpoint</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Midpoint</div>
                     <div class="card-body text-primary">
                         <textarea id="midpointField" name="message" class="form-control"
                             placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
+                <p><strong>Climax</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Climax</div>
                     <div class="card-body text-primary">
                         <textarea id="climaxField" name="message" class="form-control"
-                            placeholder="Outline text goes here" rows="6"></textarea>
-                    </div>
-                </div>
-
-                <div class="card mb-3">
-                    <div class="card-header">Resolution</div>
-                    <div class="card-body text-primary">
-                        <textarea id="resolutionField" name="message" class="form-control"
                             placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
@@ -90,9 +83,12 @@
 
             <!-- Story section -->
             <div class="col-9">
-                <textarea id="storyField" name="message" class="form-control" placeholder="Write your story here..."
-                    rows="4"></textarea>
+                <div class="storyArea">
+                    <textarea id="storyField" name="message" class="form-control" placeholder="Write your story here..."
+                        rows="4"></textarea>
+                </div>
             </div>
+
         </div>
     </div>
 

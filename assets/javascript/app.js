@@ -12,9 +12,6 @@ $(document).ready(() => {
         $('#data').text(found.length)
     }
 
-
-
-
     //------Genre
     function getGenre(genre, setting, plotOne, midPoint, climax) {
         this.genre = genre
@@ -33,30 +30,26 @@ $(document).ready(() => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, action.setting)
         getWordCount(title)
-
-
-       
-      
-
         loop(action)
     })
+
     $('#horror').on('click', () => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, horror.setting)
         loop(horror)
-       
     })
+
     $('#scifi').on('click', () => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, scifi.setting)
         loop(scifi)
     })
+
     $('#mystery').on('click', () => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, mystery.setting)
         loop(mystery)
     })
-
 
    loop = (genre) => {
     const values = Object.values(genre)
