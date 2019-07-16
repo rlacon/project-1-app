@@ -1,85 +1,129 @@
-$(document).ready(() => {
-    
-    console.log(moment().format("dddd"))
-    $('#day').text(moment().format('dddd'))
-    
+$(document).ready(function () {
 
-    
+    $('#day').text(moment().format('dddd'))
+
+
+    //$('#data').text(localStorage.getItem('wordcount'))
+
+    //This is going to be used for the storing the word count in the database. Tracks the number of words written in the textarea. 
+    //Need a button (save) to submit the form, need an event listener 'on, submit' to send data to firebase. 
+
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
-        console.log(found.length)
+
+        localStorage.setItem('wordcount', found.length)
         $('#data').text(found.length)
+        //Possibly remove from the top of the text document. Place directly into table.
+        $('#word-count-text').text(found.length + ' words')
     }
 
     //------Genre
-    function getGenre(genre, setting, plotOne, midPoint, climax) {
-        this.genre = genre
+    function getGenre(setting, plotOne, midPoint, climax) {
+
         this.setting = setting;
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
+
     }
 
-    let action = new getGenre('Action', 'A desolate wasteland where only the strong survive', 'A lone man struggles to make his way through the wastes in search of his estranged family', 'Lone man meets enemy', 'Man overcomes enemy')
-    let horror = new getGenre('Horror', 'A haunted mansion', 'A woman receives a message from someone who she thinks is still alive', 'Woman goes to investigate mysterious message', 'Woman encounters and confronts a great evil lving within the mansion')
-    let scifi = new getGenre('Scifi', 'A derelict spaceship', 'An astronaut wakes up in stasis to find hes the lone survivor on a mining vessel', 'He discovers can alien force has massacred his crew and left him alive, but for what reason?', 'Discovers reason, conflict resolution')
-    let mystery = new getGenre('Mystery', 'Rural America, 1930', 'A man who does not age seeks to find out why after being alive for more than 200 years', 'He discovers one of his family members was a witch and cursed him with immortality', 'Resolves the immortality and finally dies')
+    //These objects are converted into arrays.
+    let action = new getGenre(
+        'A desolate wasteland',
+        'A lone man struggles to make his way through the wastes in search of his estranged family',
+        'Lone man meets enemy',
+        'Man defeats battle in close battle that leaves him scarred mentally and physically')
+    let horror = new getGenre(
+        'A haunted mansion',
+        'A woman receives a message from someone who she thinks is still alive',
+        'Woman goes to investigate mysterious message',
+        'Woman encounters and confronts evil that exists within the mansion')
+    let scifi = new getGenre(
+        'A derelict spaceship',
+        'An astronaut wakes up in stasis to find hes the lone survivor on a mining vessel',
+        'He discovers can alien force has massacred his crew and left him alive, but for what reason?',
+        'Discovers reason, conflict resolution')
+    let mystery = new getGenre(
+        'Rural America, 1930',
+        'A man who does not age seeks to find out why after being alive for more than 200 years',
+        'He discovers one of his family members was a witch and cursed him with immortality',
+        'Resolves the immortality and finally dies')
+
+
+    console.log(action.plotOne)
+    //   getActionPlot_1 = () => {
+    //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
+    //   return randomPlot
+
+    //   }
+    //   getActionSetting = () => {
+    //     let randomSetting = action.setting[Math.floor(Math.random() * action.setting.length)]
+    //     return randomSetting
+    //}
+    $('#storySubmit').on('click', () => {
+        let story = $('#storyField').val().trim()
+        getWordCount(story)
+    })
 
     $('#action').on('click', () => {
-        let title = $('#title').val().trim()
-        localStorage.setItem(title, action.setting)
-        getWordCount(title)
+        //     $('#loop-info-1').text(getActionSetting())
+        //    $('#loop-info-2').text(getActionPlot_1())
         loop(action)
+        $('.mainContent').show();
+        $('nav').css('display','none');
+
+
+
+
     })
 
     $('#horror').on('click', () => {
-        let title = $('#title').val().trim()
-        localStorage.setItem(title, horror.setting)
         loop(horror)
+
+
+
     })
 
     $('#scifi').on('click', () => {
-        let title = $('#title').val().trim()
-        localStorage.setItem(title, scifi.setting)
         loop(scifi)
+
+
     })
 
     $('#mystery').on('click', () => {
-        let title = $('#title').val().trim()
-        localStorage.setItem(title, mystery.setting)
         loop(mystery)
+
+
     })
 
-   loop = (genre) => {
-    const values = Object.values(genre)
-    for(const value of values) {
-       console.log(value)
-       $('#loop-info-1').text('Setting: ' + values[1])
-       $('#loop-info-2').text('First Plot Point: ' + values[2])
-       $('#loop-info-3').text('Midpoint: ' + values[3])
-       $('#loop-info-4').text('Climax : ' + values[4])
-   }
-}
+    loop = (genre) => {
+        let values = Object.values(genre)
+        for (let value of values) {
+
+            $('#loop-info-1').text(values[0])
+            $('#loop-info-2').text(values[1])
+            $('#loop-info-3').text(values[2])
+            $('#loop-info-4').text(values[3])
+
+        }
+    }
 
     $('#clear').on('click', () => {
         $('#definitions').empty()
 
     })
 
-
     //-------Ajax calls and events for Dictionary and Thesaurus
-
-    let counter = 0;
 
     $('#userT').on('click', () => {
         event.preventDefault();
         $('#thesaurus').empty();
-        counter++
+
         let item = $('#userThes').val().trim().toLowerCase()
         let list = $('#thesaurus').css({ 'font-size': '16px' })
         $('#userThes').val('')
-        list.append('<li id=thes_' + counter + '>' + item + '</li>').css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
+        list.append('<li id=thes>' + item + '</li>').css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
         //$('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
         //$('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
         //$('#userThes').val('')
@@ -94,19 +138,10 @@ $(document).ready(() => {
 
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
-            $('#thes_' + counter).append(': ' + thes)
+            $('#thes').append(': ' + thes.join(' , '))
 
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
-
-
         })
     })
-
-
-
-
-
-
-
 })
