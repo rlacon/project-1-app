@@ -1,8 +1,31 @@
 #storyField {
-    height: 99%;
-
+    height: 778px;
+    flex-grow: 1;
+    display: flex;
 }
 
-.navbar {
-    margin-bottom: 2em;
+.storyArea {
+    margin-top: 2em;
+}
+
+nav {
+    padding-bottom: 4em;
+}
+
+#word-count-text {
+    float: right;
+}
+
+#userThes {
+    width: 60%;
+}
+
+p {
+    margin-bottom: 0px;
+    line-height: 2.3em;
+}
+
+ul {
+    padding-left: 4px;
+    padding-right: 0px;
 }
