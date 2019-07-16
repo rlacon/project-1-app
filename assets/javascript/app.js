@@ -1,11 +1,15 @@
 $(document).ready(() => {
+    
+    console.log(moment().format("dddd"))
+    $('#day').text(moment().format('dddd'))
+    
 
-
-
+    
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
         console.log(found.length)
+        $('#data').text(found.length)
     }
 
 
@@ -29,12 +33,18 @@ $(document).ready(() => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, action.setting)
         getWordCount(title)
+
+
+       
+      
+
         loop(action)
     })
     $('#horror').on('click', () => {
         let title = $('#title').val().trim()
         localStorage.setItem(title, horror.setting)
         loop(horror)
+       
     })
     $('#scifi').on('click', () => {
         let title = $('#title').val().trim()
@@ -48,13 +58,16 @@ $(document).ready(() => {
     })
 
 
-    loop = (genre) => {
-        const values = Object.values(genre)
-        for (const value of values) {
-            console.log(value)
-        }
-    }
-
+   loop = (genre) => {
+    const values = Object.values(genre)
+    for(const value of values) {
+       console.log(value)
+       $('#loop-info-1').text('Setting: ' + values[1])
+       $('#loop-info-2').text('First Plot Point: ' + values[2])
+       $('#loop-info-3').text('Midpoint: ' + values[3])
+       $('#loop-info-4').text('Climax : ' + values[4])
+   }
+}
 
     $('#clear').on('click', () => {
         $('#definitions').empty()
