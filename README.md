@@ -20,9 +20,9 @@ A app for those who wish to write their own stories, with a little guidance. Thi
     
 * As a user, I want to track the level of effort I put into my writing through the word count.
     1. Type words on the document to track the total word count.
-    2. Display the word count in the table.
-    3. The total word count will correspond to the day of the week.
+    2. Display the word count in the table and store this data upon clicking Save.
+    3. The total word count will correspond to the day of the week using moment.js logic.
     
-* As a user, I want to store and submit my story to the public for people to read.
-    1. Log in to the app through the Medium API.
-    2. Click submit on the text document to publish the story on a Medium profile.
+* As a user, I want to save a draft of my story and keep writing later.
+    1. Upon clicking a genre button, a new story is created and populates to the dashboard.
+    2. Clicking the save button will store the data in the user's local storage, and the story can be accessed again by clicking it on the dashboard. 
