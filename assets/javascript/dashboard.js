@@ -1,5 +1,16 @@
 
+$(document).ready(function () {
 
+    var queryURL = "https://healthruwords.p.rapidapi.com/v1/quotes/?id=731&t=Wisdom&maxR=1&size=medium";
+    
+
+    
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        console.log(response.quote.body);
 
 
 // $(document).ready(function () {
