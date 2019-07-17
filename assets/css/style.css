@@ -7,7 +7,7 @@ body {
     color: white;
     border: none;
     box-shadow: 0px 1px 2px grey;
-    margin: 5px;
+    margin: 0px;
 }
 
 #storyField {
@@ -18,17 +18,6 @@ body {
 
 .storyArea {
     padding-top: 35px;
-}
-
-.card {
-    background-color: none;
-    border: none;
-}
-
-.card-header {
-    padding-left: 0px;
-    padding-bottom: .25em;
-    background-color: rgba(51, 170, 51, .0)
 }
 
 .mainContent {
@@ -70,10 +59,7 @@ nav {
     border-radius: 0px;
 }
 
-p {
-    margin-bottom: 0px;
-    line-height: 2.3em;
-}
+p {}
 
 ul {
     padding-left: 4px;
@@ -88,54 +74,138 @@ ul {
     color: #5E6773;
 }
 
+.table {
+    margin-bottom: 10em;
+}
+
+.card {
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.card-text {
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: #5E6773;
+}
+
+#story1 {
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.8em;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: none;
+    margin-top: 1em;
+    font-weight: normal;
+    color: #162C4A;
+}
+
+.quoteContainer {
+    overflow: scroll;
+    height: 341px;
+}
+
+#writingStats {
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.jumbotron {
+    background-color: #F3F6F7;
+    padding: 3rem;
+    float:left;
+}
+
+.navbar-brand {
+    padding-left: 25px;
+}
+
+.navbar-nav {
+    color: white;
+    padding-left: 25px;
+}
+
+.heroSection {
+    margin-top: 1em;
+
+}
+
+.background {
+    background-color: white;
+}
+
+.navbar-brand {
+    padding-top: 0rem;
+}
+
+.h6 {
+    color: #5E6773;
+}
+
+h6 {
+    font-weight: none;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.8em;
+    color: #5E6773;
+}
+
 @media (max-width: 994px) {
     #userThes {
-        width: 54%;   
+        width: 54%;
     }
-
     #storySubmit {
         float: right;
         margin-top: 1em;
         margin-bottom: .5em;
-
     }
-
     .mainContent {
         margin-bottom: 1em;
     }
+    #quoteSection {
+        display: none;
+    }
+    .quoteContainer {
+        display: none;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
     #userThes {
-        width: 72%;  
-        margin-right: 5px;      
+        width: 73%;
     }
-    
     #storySubmit {
-        float: right;
         margin-top: 1em;
     }
-
     .mainContent {
         margin-bottom: .5em;
     }
-    
 }
+
 @media (max-width: 576px) {
     #userThes {
         width: 100%;
         margin-bottom: .5em;
     }
-
     #userT {
         float: right;
     }
-    
     #storySubmit {
         margin-top: 1em;
     }
-
     .mainContent {
         margin-bottom: .5em;
+    }
+
+    .jumbotron {
+        padding: 3rem;
     }
 }
