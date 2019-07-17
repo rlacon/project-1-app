@@ -66,4 +66,3 @@ database.ref().on('child_added', function (snapshot) {
         $("#saturdayBox").text(prevCount += parseInt(wordCount));
     }
 })
-}
