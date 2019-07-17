@@ -66,7 +66,6 @@ $(document).ready(function () {
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
-        this.resolution = resolution
 
 
     }
