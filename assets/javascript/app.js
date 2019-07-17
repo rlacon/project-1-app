@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 
         $('#story1').text(newStory);
-        $('#dayBox3').text(post.wordCount);
+        $('#dayBox3').text(post.wordCount + " words") ;
         $('#Wednesday').text(post.day);
         $('#storyField').text(post.story);
 
@@ -218,8 +218,8 @@ $(document).ready(function () {
     }).then(function (response) {
         console.log(response);
 
-        let quotes = $("<h2>").text(response.quote.body);
-        let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
+        let quotes = $("<h6>").text(response.quote.body);
+        let author = $("<h3>").text(response.quote.author)
         $("#quoteSection").empty();
         $("#quoteSection").append(quotes);
         $('#quoteSection').append(author);
