@@ -62,38 +62,25 @@ $(document).ready(function () {
         $('#Wednesday').text(post.day);
         $('#storyField').text(post.story);
 
-        //     let dayOfWeek = childSnapshot.val().day;
-        //     let wordCount = childSnapshot.val().wordCount;
+            let dayOfWeek = snapshot.val().day;
+            let wordCount = snapshot.val().wordCount;
 
-        // if (dayOfWeek === "Sunday") {
-        //     let prevCount = parseInt($("#sundayBox").text());
-        //     $("#sundayBox").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Monday") {
-        //     let prevCount = parseInt($("#mondayBox").text());
-        //     $("#mondayBox").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Tuesday") {
-        //     let prevCount = parseInt($("#tuesdayBox").text());
-        //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Wednesday") {
-        //     let prevCount = parseInt($("#wednesdayBox").text());
-        //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Thursday") {
-        //     let prevCount = parseInt($("#thursdayBox").text());
-        //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Friday") {
-        //     let prevCount = parseInt($("#friday").text());
-        //     $("#friday").text(prevCount += parseInt(wordCount));
-        // }
-        // else if (dayOfWeek === "Saturday") {
-        //     let prevCount = parseInt($("#saturdayBox").text());
-
-        //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
-        // }
+            switch (dayOfWeek) {
+                case 'Monday':
+                   return $('#day1').text(wordCount);
+                case 'Tuesday':
+                   return $('#day2').text(wordCount);
+                case 'Wednesday':
+                    return $('#day3').text(wordCount);
+                case 'Thursday':
+                    return $('#day4').text(wordCount);
+                case 'Friday':
+                    return $('#day5').text(wordCount);
+                case 'Saturday':
+                    return $('#day6').text(wordCount);
+                case 'Sunday':
+                    return $('#day7').text(wordCount);
+            }
 
     })
 
@@ -189,7 +176,7 @@ $(document).ready(function () {
         let item = $('#userThes').val().trim().toLowerCase()
         let list = $('#thesaurus').css({ 'font-size': '16px' })
         $('#userThes').val('')
-        list.append('<li id=thes>' + item + '</li>').css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
+        list.append(`<li id=thes>  ${item}  </li>`).css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
         //$('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
         //$('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
         //$('#userThes').val('')
@@ -204,25 +191,25 @@ $(document).ready(function () {
 
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
-            $('#thes').append(': ' + thes.join(' , '))
+            $('#thes').append(`:  ${thes.join(' , ')}`)
 
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
         })
     })
     //Quote AJAX CALL
-    var queryURL = "https://favqs.com/api/qotd";
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-
-        let quotes = $("<h6>").text(response.quote.body);
-        let author = $("<h3>").text(response.quote.author)
-        $("#quoteSection").empty();
-        $("#quoteSection").append(quotes);
-        $('#quoteSection').append(author);
-    });
-
+    var queryURL = "https://api.quotable.io/random";
+   $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+       console.log(response);
+     
+       let quotes = $("<h2>").text(response.content);
+       let author = $("<h3>").text(response.author).css('text-decoration', 'underline')
+       $("#quoteSection").empty();
+       $("#quoteSection").append(quotes);
+       $('#quoteSection').append(author);
+   });
+   
 }) // End of jQuery ready()
