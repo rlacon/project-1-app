@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var firebaseConfig = {
+    let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
         databaseURL: "https://writer-haven.firebaseio.com",
@@ -12,7 +12,7 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var database = firebase.database();
+    let database = firebase.database();
 
     //-------Save story content
 
@@ -49,6 +49,22 @@ $(document).ready(function () {
 
         });
     })
+
+    database.ref().on('child_added', (snapshot) => {
+        let post = snapshot.val()
+        let newStory = post.story.slice(0,150)
+        
+        
+        $('#story1').text(newStory)
+        $('#day').text(post.day)
+        $('#wedBox').text(post.wordCount)
+
+
+    })
+
+
+
+   
     $('#day').text(moment().format('dddd'))
 
     //$('#data').text(localStorage.getItem('wordcount'))
@@ -165,6 +181,33 @@ $(document).ready(function () {
             //$('#wordThes').append(' :synonyms')
         })
     })
+    //Quote AJAX CALL
+    const queryURL = "https://favqs.com/api/qotd";
+   $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+       console.log(response);
+     
+       let quotes = $("<h2>").text(response.quote.body);
+       $("#quoteSection").empty();
+       $("#quoteSection").append(quotes);
+   });
+   $("#quotes-btn").on("click", function (event) {
+       event.preventDefault()
+      
+       $.ajax({
+           url: queryURL,
+           method: "GET"
+       }).then(function (response) {
+           
+          
+            var author = $('<h3>').text(response.quote.author).css('text-decoration', 'underline')
+            var quotes = $("<h2>").text(response.quote.body);
+           $("#quoteSection").empty();
+           $("#quoteSection").append(quotes);
+           $("#quoteSection").append(author)
 
-
+       })
+    })
 }) // End of jQuery ready()
