@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    //$('#start').on('click')
 
-    var queryURL = "https://favqs.com/api/qotd";
+    var queryURL = "https://healthruwords.p.rapidapi.com/v1/quotes/?id=731&t=Wisdom&maxR=1&size=medium";
+    
 
+    
     $.ajax({
         url: queryURL,
         method: "GET"
