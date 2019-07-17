@@ -14,8 +14,6 @@ var firebaseConfig = {
 
 let database = firebase.database();
 
-
-
 /*
 getWordCount = (str) => {
     let regex = /\S+/g;
@@ -26,10 +24,6 @@ getWordCount = (str) => {
 }
 
 */
-
-
-
-
 
 database.ref().on('child_added', function (snapshot) {
     //Moment().format('dddd')
