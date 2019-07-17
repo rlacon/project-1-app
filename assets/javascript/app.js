@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
     var firebaseConfig = {
-        apiKey: "AIzaSyABqAZU7UeVQ7nA16mkhFxcmjTSM9cXKJA",
-        authDomain: "dogwood-terra-183816.firebaseapp.com",
-        databaseURL: "https://dogwood-terra-183816.firebaseio.com",
-        projectId: "dogwood-terra-183816",
-        storageBucket: "dogwood-terra-183816.appspot.com",
-        messagingSenderId: "416717539320",
-        appId: "1:416717539320:web:5cabe2f014923c29"
-    };
+        apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
+        authDomain: "writer-haven.firebaseapp.com",
+        databaseURL: "https://writer-haven.firebaseio.com",
+        projectId: "writer-haven",
+        storageBucket: "",
+        messagingSenderId: "474396693227",
+        appId: "1:474396693227:web:f156b5abddd0080c"
+      };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
@@ -50,7 +50,6 @@ $(document).ready(function () {
     $('#day').text(moment().format('dddd'))
 
     //$('#data').text(localStorage.getItem('wordcount'))
-
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
@@ -59,7 +58,9 @@ $(document).ready(function () {
        
         
     }
-
+    
+   
+    
     //------Genre
     function getGenre(setting, plotOne, midPoint, climax) {
 
@@ -95,7 +96,7 @@ $(document).ready(function () {
         'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',)
        
       
-      console.log(action.plotOne)
+     
     //   getActionPlot_1 = () => {
     //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
     //   return randomPlot
