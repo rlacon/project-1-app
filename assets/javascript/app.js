@@ -1,12 +1,53 @@
 $(document).ready(function () {
 
+    var firebaseConfig = {
+        apiKey: "AIzaSyABqAZU7UeVQ7nA16mkhFxcmjTSM9cXKJA",
+        authDomain: "dogwood-terra-183816.firebaseapp.com",
+        databaseURL: "https://dogwood-terra-183816.firebaseio.com",
+        projectId: "dogwood-terra-183816",
+        storageBucket: "dogwood-terra-183816.appspot.com",
+        messagingSenderId: "416717539320",
+        appId: "1:416717539320:web:5cabe2f014923c29"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database();
+
+    //-------Save story content
+
+    loop = (genre) => {
+        let values = Object.values(genre)
+        console.log(values);
+        for (let value of values) {
+            $('#loop-info-1').text(values[0])
+            $('#loop-info-2').text(values[1])
+            $('#loop-info-3').text(values[2])
+            $('#loop-info-4').text(values[3])
+        }
+    }
+
+    $('#storySubmit').on('click', () => {
+        event.preventDefault();
+        alert("Submit clicked");
+        let story = $('#storyField').val().trim()
+        let setting = $('#loop-info-1').text();
+        let firstPlotPoint = $('#loop-info-2').text()
+        let midPoint = $('#loop-info-3').text()
+        let climax = $('#loop-info-4').text()
+        getWordCount(story)
+
+        database.ref().push({
+            story: story,
+            setting: setting,
+            firstPlotPoint: firstPlotPoint,
+            midPoint: midPoint,
+            climax: climax
+        });
+    })
     $('#day').text(moment().format('dddd'))
 
-
     //$('#data').text(localStorage.getItem('wordcount'))
-
-    //This is going to be used for the storing the word count in the database. Tracks the number of words written in the textarea. 
-    //Need a button (save) to submit the form, need an event listener 'on, submit' to send data to firebase. 
 
     getWordCount = (str) => {
         let regex = /\S+/g;
@@ -25,25 +66,27 @@ $(document).ready(function () {
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
+        this.resolution = resolution
+
 
     }
 
     //These objects are converted into arrays.
     let action = new getGenre(
-        'A desolate wasteland',
-        'A lone man struggles to make his way through the wastes in search of his estranged family',
-        'Lone man meets enemy',
-        'Man defeats battle in close battle that leaves him scarred mentally and physically')
+        'Think about a wasteland of some form, urban environments, rural communities, war-torn areas etc',
+        'A seemingly invulnerable central character should be introduced, the kind that bullets never seem to hit',
+        'Tension building: Central character meets an enemy, rival, foe of some kind',
+        'Climax: the tipping point of the story where the main character defeats the villain typically')
     let horror = new getGenre(
-        'A haunted mansion',
-        'A woman receives a message from someone who she thinks is still alive',
-        'Woman goes to investigate mysterious message',
-        'Woman encounters and confronts evil that exists within the mansion')
+        'Think haunted mansion, cemetary, a lab where vile experiments are performed, small quiet towns, ghost towns',
+        'The first act sets up the character or characters in question, usually something disturbing happens at some point to get the rest of the story going',
+        'Tension building, confronting whatever supernatural entity or event has taken place, the characters should seem weak and vulnerable to whatever is happening',
+        'Final confrontation with source of horror that occurs in the story')
     let scifi = new getGenre(
-        'A derelict spaceship',
-        'An astronaut wakes up in stasis to find hes the lone survivor on a mining vessel',
-        'He discovers can alien force has massacred his crew and left him alive, but for what reason?',
-        'Discovers reason, conflict resolution')
+        'Think of a derelict spaceship, laboratory, anywhere with science vibes',
+        'Character or characters are introduced, usually scientists, astronauts, explorers, roboticists',
+        'Introduce a villain, mistake on the characters part that leads to an accident, AI going out of control etc',
+        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story')
     let mystery = new getGenre(
         'Rural America, 1930',
         'A man who does not age seeks to find out why after being alive for more than 200 years',
@@ -51,7 +94,6 @@ $(document).ready(function () {
         'Resolves the immortality and finally dies')
 
 
-    console.log(action.plotOne)
     //   getActionPlot_1 = () => {
     //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
     //   return randomPlot
@@ -61,57 +103,34 @@ $(document).ready(function () {
     //     let randomSetting = action.setting[Math.floor(Math.random() * action.setting.length)]
     //     return randomSetting
     //}
-    $('#storySubmit').on('click', () => {
-        let story = $('#storyField').val().trim()
-        getWordCount(story)
-    })
+
+
+    //-------Choose genre
 
     $('#action').on('click', () => {
         //     $('#loop-info-1').text(getActionSetting())
         //    $('#loop-info-2').text(getActionPlot_1())
         loop(action)
         $('.mainContent').show();
-        $('nav').css('display','none');
-
-
-
-
+        $('nav').css('display', 'none');
     })
 
     $('#horror').on('click', () => {
         loop(horror)
-
-
-
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
 
     $('#scifi').on('click', () => {
         loop(scifi)
-
-
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
 
     $('#mystery').on('click', () => {
         loop(mystery)
-
-
-    })
-
-    loop = (genre) => {
-        let values = Object.values(genre)
-        for (let value of values) {
-
-            $('#loop-info-1').text(values[0])
-            $('#loop-info-2').text(values[1])
-            $('#loop-info-3').text(values[2])
-            $('#loop-info-4').text(values[3])
-
-        }
-    }
-
-    $('#clear').on('click', () => {
-        $('#definitions').empty()
-
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
 
     //-------Ajax calls and events for Dictionary and Thesaurus
@@ -144,4 +163,6 @@ $(document).ready(function () {
             //$('#wordThes').append(' :synonyms')
         })
     })
-})
+
+
+}) // End of jQuery ready()
