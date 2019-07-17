@@ -103,7 +103,7 @@ $('#word-count-text').text(found.length + ' words')
     loop = (genre) => {
         let values = Object.values(genre)
         for (let value of values) {
-           
+           console.log(value)
             $('#loop-info-1').text(values[0])
             $('#loop-info-2').text(values[1])
             $('#loop-info-3').text(values[2])
