@@ -1,18 +1,20 @@
 $(document).ready(function () {
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyABqAZU7UeVQ7nA16mkhFxcmjTSM9cXKJA",
-        authDomain: "dogwood-terra-183816.firebaseapp.com",
-        databaseURL: "https://dogwood-terra-183816.firebaseio.com",
-        projectId: "dogwood-terra-183816",
-        storageBucket: "dogwood-terra-183816.appspot.com",
-        messagingSenderId: "416717539320",
-        appId: "1:416717539320:web:5cabe2f014923c29"
-    };
+
+    let firebaseConfig = {
+        apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
+        authDomain: "writer-haven.firebaseapp.com",
+        databaseURL: "https://writer-haven.firebaseio.com",
+        projectId: "writer-haven",
+        storageBucket: "",
+        messagingSenderId: "474396693227",
+        appId: "1:474396693227:web:f156b5abddd0080c"
+      };
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var database = firebase.database();
+    let database = firebase.database();
 
 
     //-------Save story content
@@ -29,6 +31,7 @@ $(document).ready(function () {
     }
 
     $('#storySubmit').on('click', () => {
+        
         event.preventDefault();
         alert("Story saved!");
         let story = $('#storyField').val().trim()
@@ -50,12 +53,57 @@ $(document).ready(function () {
         });
     })
 
-    $('#day').text(moment().format('dddd'))
+    database.ref().on('child_added', (snapshot) => {
+        let post = snapshot.val()
+        let newStory = post.story.slice(0,150)
+    
 
+        $('#story1').text(newStory);
+        $('#dayBox3').text(post.wordCount);
+        $('#Wednesday').text(post.day);
+        $('#storyField').text(post.story);
+
+    //     let dayOfWeek = childSnapshot.val().day;
+    //     let wordCount = childSnapshot.val().wordCount;
+
+    // if (dayOfWeek === "Sunday") {
+    //     let prevCount = parseInt($("#sundayBox").text());
+    //     $("#sundayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Monday") {
+    //     let prevCount = parseInt($("#mondayBox").text());
+    //     $("#mondayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Tuesday") {
+    //     let prevCount = parseInt($("#tuesdayBox").text());
+    //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Wednesday") {
+    //     let prevCount = parseInt($("#wednesdayBox").text());
+    //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Thursday") {
+    //     let prevCount = parseInt($("#thursdayBox").text());
+    //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Friday") {
+    //     let prevCount = parseInt($("#friday").text());
+    //     $("#friday").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Saturday") {
+    //     let prevCount = parseInt($("#saturdayBox").text());
+
+    //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
+    // }
+
+    })
+
+
+  
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
-        return found
+        return found.length
     }
 
 
@@ -163,6 +211,19 @@ $(document).ready(function () {
             //$('#wordThes').append(' :synonyms')
         })
     })
-
-
+    //Quote AJAX CALL
+    var queryURL = "https://favqs.com/api/qotd";
+   $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+       console.log(response);
+     
+       let quotes = $("<h2>").text(response.quote.body);
+       let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
+       $("#quoteSection").empty();
+       $("#quoteSection").append(quotes);
+       $('#quoteSection').append(author);
+   });
+   
 }) // End of jQuery ready()
