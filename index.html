@@ -23,17 +23,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Write-haven</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <a class="navbar-brand" href="index.html">Write Haven</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="index.html">Dashboard <span
-                        class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="story.html"> Text</a>
+                <a class="nav-item nav-link" href="story.html"> Write</a>
             </div>
         </div>
     </nav>
@@ -41,88 +40,73 @@
 
 
 
-
-<div class="row">
-       <div class="col-sm-7">
-           <div class="jumbotron">
-               <h1 class="display-4">Good Morning, USERNAME!</h1>
-               <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                   attention
-                   to
-                   featured content or information.</p>
-               <hr class="my-4">
-               <p>It uses utility classes for typography and spacing to space content out within the larger container.
-               </p>
-               <p class="lead">
-                   <a class="btn btn-primary btn-lg" href="#" role="button">Start writing!</a>
-               </p>
-           </div>
-       </div>
-       <div class="col-sm 4 jumbotron">
-          
-
-
-                   
-
-          <h5 id="quoteSection"></h5>
-
-       </div>
-
-    </div>
-
-
-
-
-
-
-
-    </div>
-
-
-    <div class="container">
-        <h2>Your stories: </h2>
+    <!-- Start Writing Section -->
+    <div class="container heroSection">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Writing 1</h5>
-                        <p class="card-text" id="story1"></p>
-                        <a href="story.html" class="btn btn-primary">Continue writing!</a>
-                    </div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="jumbotron">
+                    <h1>Start Writing</h1>
+                        <h3><span style="color: #5E6773">Write a new story and keep track of your writing progress below.</span></h3>
+                        <hr class="my-4">
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg" href="story.html" role="button">Create a new Story</a>
+                        </p>
                 </div>
             </div>
-            <div class="col-sm-3">
-              
 
-        <br>
-        <h3>Statistics</h3>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" id="Monday">Monday</th>
-                    <th scope="col" id="Tuesday">Tuesday</th>
-                    <th scope="col" id="Wednesday">Wednesday</th>
-                    <th scope="col" id="Thursday">Thursday</th>
-                    <th scope="col" id="Friday">Friday</th>
-                    <th scope="col" id="Saturday">Saturday</th>
-                    <th scope="col" id="Sunday">Sunday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row" id="day1">Words:0</td>
-                    <td scope="row" id="day2">Words:0</td>
-                    <td scope="row" id="day3">Words:0</td>
-                    <td scope="row" id="day4">Words:0</td>
-                    <td scope="row" id="day5">Words:0</td>
-                    <td scope="row" id="day6">Words:0</td>
-                    <td scope="row" id="day7">Words:0</td>
-                    
-                   
-                   
-                </tr>
-            </tbody>
-        </table>
+            <!-- Quote Section -->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 jumbotron quoteContainer">
+                <h5 id="quoteSection"></h5>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container storyContainer">
+        <h2>Your Stories</h2>
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-8 col-sm-8">
+                <a href="story.html">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">My First Story</h5>
+                            <p class="card-text" id="story1"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-12">
+
+
+
+            <h2 id="writingStats">Writing Stats</span></h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" id="Monday">Monday</th>
+                        <th scope="col" id="Tuesday">Tuesday</th>
+                        <th scope="col" id="Wednesday">Wednesday</th>
+                        <th scope="col" id="Thursday">Thursday</th>
+                        <th scope="col" id="Friday">Friday</th>
+                        <th scope="col" id="Saturday">Saturday</th>
+                        <th scope="col" id="Sunday">Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" id="dayBox1">0 words</td>
+                        <td scope="row" id="dayBox2">0 words</td>
+                        <td scope="row" id="dayBox3">0 words</td>
+                        <td scope="row" id="dayBox4">0 words</td>
+                        <td scope="row" id="dayBox5">0 words</td>
+                        <td scope="row" id="dayBox6">0 words</td>
+                        <td scope="row" id="dayBox7">0 words</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="assets/javascript/app.js"></script>
 </body>

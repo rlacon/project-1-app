@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
@@ -9,7 +8,7 @@ $(document).ready(function () {
         storageBucket: "",
         messagingSenderId: "474396693227",
         appId: "1:474396693227:web:f156b5abddd0080c"
-      };
+    };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -31,7 +30,7 @@ $(document).ready(function () {
     }
 
     $('#storySubmit').on('click', () => {
-        
+
         event.preventDefault();
         alert("Story saved!");
         let story = $('#storyField').val().trim()
@@ -54,39 +53,39 @@ $(document).ready(function () {
     })
 
     database.ref().on('child_added', (snapshot) => {
-        let post = snapshot.val();
-        let newStory = post.story.slice(0,150);
-    
+        let post = snapshot.val()
+        let newStory = post.story.slice(0, 150) + "..."
+
 
         $('#story1').text(newStory);
-        $('#storyField').text(post.story)
-       
-        let dayOfWeek = snapshot.val().day;
-        let wordCount = snapshot.val().wordCount;
-        console.log(dayOfWeek)
-        console.log(wordCount)  
-        switch (dayOfWeek) {
-            case 'Monday':
-               return $('#day1').text(wordCount);
-            case 'Tuesday':
-               return $('#day2').text(wordCount);
-            case 'Wednesday':
-                return $('#day3').text(wordCount);
-            case 'Thursday':
-                return $('#day4').text(wordCount);
-            case 'Friday':
-                return $('#day5').text(wordCount);
-            case 'Saturday':
-                return $('#day6').text(wordCount);
-            case 'Sunday':
-                return $('#day7').text(wordCount);
-        }
-    
+        $('#dayBox3').text(post.wordCount + " words") ;
+        $('#Wednesday').text(post.day);
+        $('#storyField').text(post.story);
+
+            let dayOfWeek = snapshot.val().day;
+            let wordCount = snapshot.val().wordCount;
+
+            switch (dayOfWeek) {
+                case 'Monday':
+                   return $('#day1').text(wordCount);
+                case 'Tuesday':
+                   return $('#day2').text(wordCount);
+                case 'Wednesday':
+                    return $('#day3').text(wordCount);
+                case 'Thursday':
+                    return $('#day4').text(wordCount);
+                case 'Friday':
+                    return $('#day5').text(wordCount);
+                case 'Saturday':
+                    return $('#day6').text(wordCount);
+                case 'Sunday':
+                    return $('#day7').text(wordCount);
+            }
 
     })
 
 
-  
+
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
