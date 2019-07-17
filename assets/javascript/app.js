@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
@@ -9,7 +8,7 @@ $(document).ready(function () {
         storageBucket: "",
         messagingSenderId: "474396693227",
         appId: "1:474396693227:web:f156b5abddd0080c"
-      };
+    };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -31,7 +30,7 @@ $(document).ready(function () {
     }
 
     $('#storySubmit').on('click', () => {
-        
+
         event.preventDefault();
         alert("Story saved!");
         let story = $('#storyField').val().trim()
@@ -55,51 +54,51 @@ $(document).ready(function () {
 
     database.ref().on('child_added', (snapshot) => {
         let post = snapshot.val()
-        let newStory = post.story.slice(0,150)
-    
+        let newStory = post.story.slice(0, 150) + "..."
+
 
         $('#story1').text(newStory);
         $('#dayBox3').text(post.wordCount);
         $('#Wednesday').text(post.day);
         $('#storyField').text(post.story);
 
-    //     let dayOfWeek = childSnapshot.val().day;
-    //     let wordCount = childSnapshot.val().wordCount;
+        //     let dayOfWeek = childSnapshot.val().day;
+        //     let wordCount = childSnapshot.val().wordCount;
 
-    // if (dayOfWeek === "Sunday") {
-    //     let prevCount = parseInt($("#sundayBox").text());
-    //     $("#sundayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Monday") {
-    //     let prevCount = parseInt($("#mondayBox").text());
-    //     $("#mondayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Tuesday") {
-    //     let prevCount = parseInt($("#tuesdayBox").text());
-    //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Wednesday") {
-    //     let prevCount = parseInt($("#wednesdayBox").text());
-    //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Thursday") {
-    //     let prevCount = parseInt($("#thursdayBox").text());
-    //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Friday") {
-    //     let prevCount = parseInt($("#friday").text());
-    //     $("#friday").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Saturday") {
-    //     let prevCount = parseInt($("#saturdayBox").text());
+        // if (dayOfWeek === "Sunday") {
+        //     let prevCount = parseInt($("#sundayBox").text());
+        //     $("#sundayBox").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Monday") {
+        //     let prevCount = parseInt($("#mondayBox").text());
+        //     $("#mondayBox").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Tuesday") {
+        //     let prevCount = parseInt($("#tuesdayBox").text());
+        //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Wednesday") {
+        //     let prevCount = parseInt($("#wednesdayBox").text());
+        //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Thursday") {
+        //     let prevCount = parseInt($("#thursdayBox").text());
+        //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Friday") {
+        //     let prevCount = parseInt($("#friday").text());
+        //     $("#friday").text(prevCount += parseInt(wordCount));
+        // }
+        // else if (dayOfWeek === "Saturday") {
+        //     let prevCount = parseInt($("#saturdayBox").text());
 
-    //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
-    // }
+        //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
+        // }
 
     })
 
 
-  
+
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
@@ -213,17 +212,17 @@ $(document).ready(function () {
     })
     //Quote AJAX CALL
     var queryURL = "https://favqs.com/api/qotd";
-   $.ajax({
-       url: queryURL,
-       method: "GET"
-   }).then(function (response) {
-       console.log(response);
-     
-       let quotes = $("<h2>").text(response.quote.body);
-       let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
-       $("#quoteSection").empty();
-       $("#quoteSection").append(quotes);
-       $('#quoteSection').append(author);
-   });
-   
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+
+        let quotes = $("<h2>").text(response.quote.body);
+        let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
+        $("#quoteSection").empty();
+        $("#quoteSection").append(quotes);
+        $('#quoteSection').append(author);
+    });
+
 }) // End of jQuery ready()
