@@ -66,6 +66,10 @@ $(document).ready(function () {
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
+<<<<<<< HEAD
+=======
+     
+>>>>>>> f899c559031a73b39d66e747f73d18fd37e774a9
 
 
     }
@@ -80,19 +84,20 @@ $(document).ready(function () {
         'Think haunted mansion, cemetary, a lab where vile experiments are performed, small quiet towns, ghost towns',
         'The first act sets up the character or characters in question, usually something disturbing happens at some point to get the rest of the story going',
         'Tension building, confronting whatever supernatural entity or event has taken place, the characters should seem weak and vulnerable to whatever is happening',
-        'Final confrontation with source of horror that occurs in the story')
+        'Final confrontation with source of horror that occurs in the story',)
     let scifi = new getGenre(
-        'Think of a derelict spaceship, laboratory, anywhere with science vibes',
+        'Think of a derelict spaceship, laboratory, anywhere with science vibes', 
         'Character or characters are introduced, usually scientists, astronauts, explorers, roboticists',
         'Introduce a villain, mistake on the characters part that leads to an accident, AI going out of control etc',
-        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story')
+        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story',)
     let mystery = new getGenre(
-        'Rural America, 1930',
-        'A man who does not age seeks to find out why after being alive for more than 200 years',
-        'He discovers one of his family members was a witch and cursed him with immortality',
-        'Resolves the immortality and finally dies')
-
-
+        'Think of a gathering among friends, law enforcement personell, a stranger who emerges suddenly from nowhere',
+        'Introduction of either central character or several',
+        'Event can occur at this point that is unexplainable, character\'s then seek to uncover the reason',
+        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',)
+       
+      
+      console.log(action.plotOne)
     //   getActionPlot_1 = () => {
     //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
     //   return randomPlot
