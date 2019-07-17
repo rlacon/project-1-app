@@ -54,47 +54,34 @@ $(document).ready(function () {
     })
 
     database.ref().on('child_added', (snapshot) => {
-        let post = snapshot.val()
-        let newStory = post.story.slice(0,150)
+        let post = snapshot.val();
+        let newStory = post.story.slice(0,150);
     
 
         $('#story1').text(newStory);
-        $('#dayBox3').text(post.wordCount);
-        $('#Wednesday').text(post.day);
-        $('#storyField').text(post.story);
-
-    //     let dayOfWeek = childSnapshot.val().day;
-    //     let wordCount = childSnapshot.val().wordCount;
-
-    // if (dayOfWeek === "Sunday") {
-    //     let prevCount = parseInt($("#sundayBox").text());
-    //     $("#sundayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Monday") {
-    //     let prevCount = parseInt($("#mondayBox").text());
-    //     $("#mondayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Tuesday") {
-    //     let prevCount = parseInt($("#tuesdayBox").text());
-    //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Wednesday") {
-    //     let prevCount = parseInt($("#wednesdayBox").text());
-    //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Thursday") {
-    //     let prevCount = parseInt($("#thursdayBox").text());
-    //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Friday") {
-    //     let prevCount = parseInt($("#friday").text());
-    //     $("#friday").text(prevCount += parseInt(wordCount));
-    // }
-    // else if (dayOfWeek === "Saturday") {
-    //     let prevCount = parseInt($("#saturdayBox").text());
-
-    //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
-    // }
+        $('#storyField').text(post.story)
+       
+        let dayOfWeek = snapshot.val().day;
+        let wordCount = snapshot.val().wordCount;
+        console.log(dayOfWeek)
+        console.log(wordCount)  
+        switch (dayOfWeek) {
+            case 'Monday':
+               return $('#day1').text(wordCount);
+            case 'Tuesday':
+               return $('#day2').text(wordCount);
+            case 'Wednesday':
+                return $('#day3').text(wordCount);
+            case 'Thursday':
+                return $('#day4').text(wordCount);
+            case 'Friday':
+                return $('#day5').text(wordCount);
+            case 'Saturday':
+                return $('#day6').text(wordCount);
+            case 'Sunday':
+                return $('#day7').text(wordCount);
+        }
+    
 
     })
 
