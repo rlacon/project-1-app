@@ -1,11 +1,42 @@
+body {
+    background-color: #F3F6F7;
+}
+
+.btn {
+    background-color: #0090D0;
+    color: white;
+    border: none;
+    box-shadow: 0px 1px 2px grey;
+}
+
 #storyField {
-    height: 778px;
+    height: 788px;
     flex-grow: 1;
     display: flex;
 }
 
 .storyArea {
-    margin-top: 2em;
+    padding-top: 35px;
+}
+
+.card {
+    background-color: none;
+    border: none;
+}
+
+.card-header {
+    padding-left: 0px;
+    padding-bottom: .25em;
+    background-color: rgba(51, 170, 51, .0)
+}
+
+.mainContent {
+    margin-bottom: 4em;
+    display:none
+}
+
+.text-primary {
+    padding: 0px;
 }
 
 nav {
@@ -20,6 +51,11 @@ nav {
     width: 60%;
 }
 
+.formControl {
+    border-style: none;
+    border-radius: 0px;
+}
+
 p {
     margin-bottom: 0px;
     line-height: 2.3em;
@@ -28,4 +64,8 @@ p {
 ul {
     padding-left: 4px;
     padding-right: 0px;
+}
+
+#saveStory {
+    float: right;
 }
