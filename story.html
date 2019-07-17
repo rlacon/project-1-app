@@ -11,9 +11,6 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-  
-    
-
 </head>
 
 <body>
@@ -57,8 +54,6 @@
                 </div>
             </div>
         </div>
-
-
     </nav>
 
     <!-- Thesaurus definition area -->
@@ -73,13 +68,13 @@
     <!-- Thesaurus text field and Word Count -->
     <div class="container mainContent">
         <div class="row">
-            <div class="offset-3 col-7">
+            <div class="offset-3 col-xl-7 col-lg-7 col-md-8">
                 <form class="form-inline d-inline" id="formsubmit">
                     <input id="userThes" class="form-control sm-5" placeholder="Type in a word" type="text">
                     <button class="btn btn-dark" id="userT" type="submit">Use Thesaurus</button>
                 </form>
             </div>
-            <div class="col-2">
+            <div class="col-xl-2 col-lg-2 col-md-1">
                 <button id="storySubmit" class="btn btn-danger">Save</button>
             </div>
         </div>
@@ -94,30 +89,32 @@
                 <p><strong>Setting</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-1"></p>
+                        <textarea id="settingField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>First Plot Point</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-2"></p>
+                        <textarea id="firstPlotPointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>Midpoint</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-3"></p>
-
+                        <textarea id="midpointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>Climax</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-4"></p>
-
+                        <textarea id="climaxField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
             </div>

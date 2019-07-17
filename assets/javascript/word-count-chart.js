@@ -32,7 +32,7 @@ getWordCount = (str) => {
 
 
 database.ref().on('child_added', function (snapshot) {
-
+    //Moment().format('dddd')
     let dayOfWeek = childSnapshot.val().day;
     let wordCount = childSnapshot.val().wordCount;
 
