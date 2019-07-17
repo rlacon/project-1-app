@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyCetbRyR3StVbp6jLMRDqliRvo6u5TPCpk",
     authDomain: "write-haven-d0cda.firebaseapp.com",
@@ -28,7 +29,10 @@ getWordCount = (str) => {
 
 
 
+
+
 database.ref().on('child_added', function (snapshot) {
+
     let dayOfWeek = childSnapshot.val().day;
     let wordCount = childSnapshot.val().wordCount;
 
@@ -58,6 +62,8 @@ database.ref().on('child_added', function (snapshot) {
     }
     else if (dayOfWeek === "Saturday") {
         let prevCount = parseInt($("#saturdayBox").text());
+
         $("#saturdayBox").text(prevCount += parseInt(wordCount));
     }
 })
+}

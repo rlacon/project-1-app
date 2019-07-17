@@ -9,55 +9,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Story-Box</title>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
-   
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+  
+    
+
 </head>
 
 <body>
+
     <nav>
-            <div class="d-flex flex-row justify-content-center">
-      
-                    <div class="card text-center" style="width: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Adventure</h5>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-dark" id="action">Choose Genre</a>
-                        </div>
-                    </div>
-            
-            
-                    <div class="card text-center" style="width: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Horror</h5>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-dark" id="horror">Choose Genre</a>
-                        </div>
-                    </div>
-            
-               
-                
-                    <div class="card text-center" style="width: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sci-Fi</h5>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-dark" id="scifi">Choose Genre</a>
-                        </div>
-                    </div>
-            
-            
-                    <div class="card text-center" style="width: 13rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Mystery</h5>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-dark" id="mystery">Choose Genre</a>
-                        </div>
-                    </div>
-                 </div>
+        <div class="d-flex flex-row justify-content-center">
+
+            <div class="card text-center" style="width: 13rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Adventure</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-dark" id="action">Choose Genre</a>
+                </div>
+            </div>
+
+
+            <div class="card text-center" style="width: 13rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Horror</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-dark" id="horror">Choose Genre</a>
+                </div>
+            </div>
+
+
+
+            <div class="card text-center" style="width: 13rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Sci-Fi</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-dark" id="scifi">Choose Genre</a>
+                </div>
+            </div>
+
+
+            <div class="card text-center" style="width: 13rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Mystery</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="btn btn-dark" id="mystery">Choose Genre</a>
+                </div>
+            </div>
+        </div>
+
 
     </nav>
 
     <!-- Thesaurus definition area -->
-    <div class="container thesaurusContainer" id="definethes">
+    <div class="container mainContent" id="definethes">
         <div class="row">
             <div class="offset-3 col-9">
                 <ul id="thesaurus"></ul>
@@ -66,72 +71,63 @@
     </div>
 
     <!-- Thesaurus text field and Word Count -->
-    <div class="container">
+    <div class="container mainContent">
         <div class="row">
             <div class="offset-3 col-7">
                 <form class="form-inline d-inline" id="formsubmit">
                     <input id="userThes" class="form-control sm-5" placeholder="Type in a word" type="text">
-                    <button class="btn btn-dark" id="userT" type="submit">Thesaurus</button>
+                    <button class="btn btn-dark" id="userT" type="submit">Use Thesaurus</button>
                 </form>
             </div>
             <div class="col-2">
-                <p id="word-count-text">0 words</p>
+                <button id="storySubmit" class="btn btn-danger">Save</button>
             </div>
         </div>
     </div>
 
     <!-- Main content area -->
-    <div class="display-flex storyArea " role="main">
+    <div class="container mainContent" role="main">
         <div class="row">
 
             <!-- Outline section -->
             <div class="col-3">
+                <p><strong>Setting</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Setting</div>
                     <div class="card-body text-primary">
-                        <p class="card-text" id="loop-info-1"></p>
+                        <p id="loop-info-1"></p>
                     </div>
                 </div>
 
+                <p><strong>First Plot Point</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">First Plot Point</div>
                     <div class="card-body text-primary">
-                        <p class="card-text" id="loop-info-2"></p> 
-                             
+                        <p id="loop-info-2"></p>
                     </div>
                 </div>
 
+                <p><strong>Midpoint</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Midpoint</div>
                     <div class="card-body text-primary">
-                        <p class="card-text" id="loop-info-3"></p > 
-                            
+                        <p id="loop-info-3"></p>
+
                     </div>
                 </div>
 
+                <p><strong>Climax</strong></p>
                 <div class="card mb-3">
-                    <div class="card-header">Climax</div>
                     <div class="card-body text-primary">
-                        <p class="card-text" id="loop-info-4"></p>
-                             
+                        <p id="loop-info-4"></p>
+
                     </div>
                 </div>
-
-                <div class="card mb-3">
-                    <div class="card-header">Resolution</div>
-                    <div class="card-body text-primary">
-                        <p class="card-text" id="loop-info-5"></p class="card-text">
-                    </div>
-                </div>
-
             </div>
 
             <!-- Story section -->
             <div class="col-9">
                 <textarea id="storyField" name="message" class="form-control" placeholder="Write your story here..."
                     rows="4"></textarea>
-                    <button id="storySubmit" class="btn btn-danger">Save</button>
             </div>
+
         </div>
     </div>
 

@@ -1,140 +1,145 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
+    var firebaseConfig = {
+        apiKey: "AIzaSyABqAZU7UeVQ7nA16mkhFxcmjTSM9cXKJA",
+        authDomain: "dogwood-terra-183816.firebaseapp.com",
+        databaseURL: "https://dogwood-terra-183816.firebaseio.com",
+        projectId: "dogwood-terra-183816",
+        storageBucket: "dogwood-terra-183816.appspot.com",
+        messagingSenderId: "416717539320",
+        appId: "1:416717539320:web:5cabe2f014923c29"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database();
+
+    //-------Save story content
+
+    loop = (genre) => {
+        let values = Object.values(genre)
+        console.log(values);
+        for (let value of values) {
+            $('#loop-info-1').text(values[0])
+            $('#loop-info-2').text(values[1])
+            $('#loop-info-3').text(values[2])
+            $('#loop-info-4').text(values[3])
+        }
+    }
+
+    $('#storySubmit').on('click', () => {
+        event.preventDefault();
+        alert("Submit clicked");
+        let story = $('#storyField').val().trim()
+        let setting = $('#loop-info-1').text();
+        let firstPlotPoint = $('#loop-info-2').text()
+        let midPoint = $('#loop-info-3').text()
+        let climax = $('#loop-info-4').text()
+        getWordCount(story)
+
+        database.ref().push({
+            story: story,
+            setting: setting,
+            firstPlotPoint: firstPlotPoint,
+            midPoint: midPoint,
+            climax: climax
+        });
+    })
     $('#day').text(moment().format('dddd'))
 
+    //$('#data').text(localStorage.getItem('wordcount'))
 
-//$('#data').text(localStorage.getItem('wordcount'))
+    getWordCount = (str) => {
+        let regex = /\S+/g;
+        let found = str.match(regex)
 
-//This is going to be used for the storing the word count in the database. Tracks the number of words written in the textarea. 
-//Need a button (save) to submit the form, need an event listener 'on, submit' to send data to firebase. 
-
-
-
- getWordCount = (str) => {
-  let regex = /\S+/g;
-  let found = str.match(regex)
-  
-localStorage.setItem('wordcount', found.length)
-$('#data').text(found.length)
-//Possibly remove from the top of the text document. Place directly into table.
-$('#word-count-text').text(found.length + ' words')
- }
-
-
-
+        localStorage.setItem('wordcount', found.length)
+        $('#data').text(found.length)
+        //Possibly remove from the top of the text document. Place directly into table.
+        $('#word-count-text').text(found.length + ' words')
+    }
 
     //------Genre
-    function getGenre(setting, plotOne, midPoint, climax, resolution) {
-        
+    function getGenre(setting, plotOne, midPoint, climax) {
+
         this.setting = setting;
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
-        this.resolution = resolution
-        
+     
+
+
     }
+
     //These objects are converted into arrays.
     let action = new getGenre(
         'Think about a wasteland of some form, urban environments, rural communities, war-torn areas etc',
-        'A seemingly invulnerable central character should be introduced, the kind that bullets never seem to hit', 
-        'Tension building: Central character meets an enemy, rival, foe of some kind', 
-        'Climax: the tipping point of the story where the main character defeats the villain typically',
-        'The resolution occurs when the villain dies or is defeated somehow, in which the main character\'s issues are solved. Tension is no longer present')
+        'A seemingly invulnerable central character should be introduced, the kind that bullets never seem to hit',
+        'Tension building: Central character meets an enemy, rival, foe of some kind',
+        'Climax: the tipping point of the story where the main character defeats the villain typically')
     let horror = new getGenre(
         'Think haunted mansion, cemetary, a lab where vile experiments are performed, small quiet towns, ghost towns',
         'The first act sets up the character or characters in question, usually something disturbing happens at some point to get the rest of the story going',
         'Tension building, confronting whatever supernatural entity or event has taken place, the characters should seem weak and vulnerable to whatever is happening',
-        'Final confrontation with source of horror that occurs in the story',
-        'Character could live or die, or some other strange or horrifying outcome, story could have a bleak ending or a happy one to ease the previous tension')
+        'Final confrontation with source of horror that occurs in the story',)
     let scifi = new getGenre(
         'Think of a derelict spaceship, laboratory, anywhere with science vibes', 
         'Character or characters are introduced, usually scientists, astronauts, explorers, roboticists',
         'Introduce a villain, mistake on the characters part that leads to an accident, AI going out of control etc',
-        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story',
-        'Scifi stories tend to end in a variety of different ways, generally they have obscure endings where the ending is left up to the viewer\'s imagination')
+        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story',)
     let mystery = new getGenre(
         'Think of a gathering among friends, law enforcement personell, a stranger who emerges suddenly from nowhere',
         'Introduction of either central character or several',
         'Event can occur at this point that is unexplainable, character\'s then seek to uncover the reason',
-        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',
-        'Readers want to know what happened to the characters, or you could leave it murky and leave it up to them to decide.')
+        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',)
        
       
       console.log(action.plotOne)
     //   getActionPlot_1 = () => {
     //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
     //   return randomPlot
-       
+
     //   }
     //   getActionSetting = () => {
     //     let randomSetting = action.setting[Math.floor(Math.random() * action.setting.length)]
     //     return randomSetting
     //}
-    $('#storySubmit').on('click', () => {
-        let story = $('#storyField').val().trim()
-        getWordCount(story)
-    })
+
+
+    //-------Choose genre
 
     $('#action').on('click', () => {
-    //     $('#loop-info-1').text(getActionSetting())
-    //    $('#loop-info-2').text(getActionPlot_1())
+        //     $('#loop-info-1').text(getActionSetting())
+        //    $('#loop-info-2').text(getActionPlot_1())
         loop(action)
-
-       
-        
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
+
     $('#horror').on('click', () => {
-         loop(horror)
-        
-       
-
+        loop(horror)
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
+
     $('#scifi').on('click', () => {
         loop(scifi)
-        
-        
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
+
     $('#mystery').on('click', () => {
-         loop(mystery)
-       
-       
+        loop(mystery)
+        $('.mainContent').show();
+        $('nav').css('display', 'none');
     })
-
-    loop = (genre) => {
-        let values = Object.values(genre)
-        for (let value of values) {
-           console.log(value)
-            $('#loop-info-1').text(values[0])
-            $('#loop-info-2').text(values[1])
-            $('#loop-info-3').text(values[2])
-            $('#loop-info-4').text(values[3])
-            $('#loop-info-5').text(values[4])
-            
-        }
-    }
-    
-    $('#clear').on('click', () => {
-        $('#definitions').empty()
-
-    })
- 
-    
-   
-    
-
-
-    
-
-   
 
     //-------Ajax calls and events for Dictionary and Thesaurus
-
-    
 
     $('#userT').on('click', () => {
         event.preventDefault();
         $('#thesaurus').empty();
-       
+
         let item = $('#userThes').val().trim().toLowerCase()
         let list = $('#thesaurus').css({ 'font-size': '16px' })
         $('#userThes').val('')
@@ -157,15 +162,8 @@ $('#word-count-text').text(found.length + ' words')
 
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
-
-
         })
     })
 
 
-
-
-
-
-
-})
+}) // End of jQuery ready()
