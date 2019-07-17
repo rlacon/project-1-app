@@ -58,10 +58,43 @@ $(document).ready(function () {
         let newStory = post.story.slice(0,150)
     
 
-        $('#story1').text(newStory)
-        $('#day').text(post.day)
-        $('#wedBox').text(post.wordCount)
+        $('#story1').text(newStory);
+        $('#dayBox3').text(post.wordCount);
+        $('#Wednesday').text(post.day);
+        $('#storyField').text(post.story);
 
+    //     let dayOfWeek = childSnapshot.val().day;
+    //     let wordCount = childSnapshot.val().wordCount;
+
+    // if (dayOfWeek === "Sunday") {
+    //     let prevCount = parseInt($("#sundayBox").text());
+    //     $("#sundayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Monday") {
+    //     let prevCount = parseInt($("#mondayBox").text());
+    //     $("#mondayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Tuesday") {
+    //     let prevCount = parseInt($("#tuesdayBox").text());
+    //     $("#tuesdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Wednesday") {
+    //     let prevCount = parseInt($("#wednesdayBox").text());
+    //     $("#wednesdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Thursday") {
+    //     let prevCount = parseInt($("#thursdayBox").text());
+    //     $("#thursdayBox").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Friday") {
+    //     let prevCount = parseInt($("#friday").text());
+    //     $("#friday").text(prevCount += parseInt(wordCount));
+    // }
+    // else if (dayOfWeek === "Saturday") {
+    //     let prevCount = parseInt($("#saturdayBox").text());
+
+    //     $("#saturdayBox").text(prevCount += parseInt(wordCount));
+    // }
 
     })
 
@@ -179,7 +212,7 @@ $(document).ready(function () {
         })
     })
     //Quote AJAX CALL
-    const queryURL = "https://favqs.com/api/qotd";
+    var queryURL = "https://favqs.com/api/qotd";
    $.ajax({
        url: queryURL,
        method: "GET"
