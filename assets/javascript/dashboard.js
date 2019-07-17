@@ -1,34 +1,38 @@
-$(document).ready(function () {
-    //$('#start').on('click')
 
-    var queryURL = "https://favqs.com/api/qotd";
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        console.log(response.quote.body);
 
-        var quotes = $("<h2>").text(response.quote.body);
 
-        $("#quoteSection").empty();
-        $("#quoteSection").append(quotes);
-    });
+// $(document).ready(function () {
+//     //$('#start').on('click')
 
-    $("#quotes-btn").on("click", function (event) {
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
-            console.log(response.quote.body);
+//     var queryURL = "https://favqs.com/api/qotd";
 
-            var quotes = $("<h2>").text(response.quote.body);
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         console.log(response);
+//         console.log(response.quote.body);
 
-            $("#quoteSection").empty();
-            $("#quoteSection").append(quotes);
-        });
+//         var quotes = $("<h2>").text(response.quote.body);
 
-    })
-})
+//         $("#quoteSection").empty();
+//         $("#quoteSection").append(quotes);
+//     });
+
+//     $("#quotes-btn").on("click", function (event) {
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         }).then(function (response) {
+//             console.log(response);
+//             console.log(response.quote.body);
+
+//             var quotes = $("<h2>").text(response.quote.body);
+
+//             $("#quoteSection").empty();
+//             $("#quoteSection").append(quotes);
+//         });
+
+//     })
+// })
