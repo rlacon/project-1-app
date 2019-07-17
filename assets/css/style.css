@@ -48,6 +48,10 @@ nav {
     margin-top: 1em;
 }
 
+.storyChoices {
+    margin-top: 2em;
+}
+
 #storySubmit {
     float: right;
 }

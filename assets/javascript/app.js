@@ -8,7 +8,7 @@ $(document).ready(function () {
         storageBucket: "dogwood-terra-183816.appspot.com",
         messagingSenderId: "416717539320",
         appId: "1:416717539320:web:5cabe2f014923c29"
-      };
+    };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
@@ -49,10 +49,9 @@ $(document).ready(function () {
             wordCount: wordCount
         });
     })
-    
+
     $('#day').text(moment().format('dddd'))
 
-    //$('#data').text(localStorage.getItem('wordcount'))
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
@@ -113,25 +112,25 @@ $(document).ready(function () {
     $('#action').on('click', () => {
         loop(action)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#horror').on('click', () => {
         loop(horror)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#scifi').on('click', () => {
         loop(scifi)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#mystery').on('click', () => {
         loop(mystery)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     //-------Ajax calls and events for Dictionary and Thesaurus
