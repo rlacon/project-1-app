@@ -26,7 +26,7 @@ $(document).ready(function () {
             $('#loop-info-4').text(values[3])
         }
     }
-
+    
     $('#storySubmit').on('click', () => {
         event.preventDefault();
         alert("Submit clicked");
@@ -35,6 +35,7 @@ $(document).ready(function () {
         let firstPlotPoint = $('#loop-info-2').text()
         let midPoint = $('#loop-info-3').text()
         let climax = $('#loop-info-4').text()
+        let day = moment().format("dddd")
         getWordCount(story)
 
         database.ref().push({
@@ -42,7 +43,8 @@ $(document).ready(function () {
             setting: setting,
             firstPlotPoint: firstPlotPoint,
             midPoint: midPoint,
-            climax: climax
+            climax: climax,
+            day: day
         });
     })
     $('#day').text(moment().format('dddd'))
@@ -52,11 +54,10 @@ $(document).ready(function () {
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
+        return found      
 
-        localStorage.setItem('wordcount', found.length)
-        $('#data').text(found.length)
-        //Possibly remove from the top of the text document. Place directly into table.
-        $('#word-count-text').text(found.length + ' words')
+       
+        
     }
 
     //------Genre
@@ -66,10 +67,7 @@ $(document).ready(function () {
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
-<<<<<<< HEAD
-=======
-     
->>>>>>> f899c559031a73b39d66e747f73d18fd37e774a9
+        
 
 
     }
