@@ -84,8 +84,58 @@ ul {
     float: right;
 }
 
-@media (max-width: 992px) {
+#thes {
+    color: #5E6773;
+}
+
+@media (max-width: 994px) {
     #userThes {
-        width: 50%;
+        width: 54%;   
+    }
+
+    #storySubmit {
+        float: right;
+        margin-top: 1em;
+        margin-bottom: .5em;
+
+    }
+
+    .mainContent {
+        margin-bottom: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    #userThes {
+        width: 72%;  
+        margin-right: 5px;      
+    }
+    
+    #storySubmit {
+        float: right;
+        margin-top: 1em;
+    }
+
+    .mainContent {
+        margin-bottom: .5em;
+    }
+    
+}
+@media (max-width: 576px) {
+    #userThes {
+        width: 100%;
+        margin-bottom: .5em;
+    }
+
+    #userT {
+        float: right;
+    }
+    
+    #storySubmit {
+        margin-top: 1em;
+    }
+
+    .mainContent {
+        margin-bottom: .5em;
     }
 }
