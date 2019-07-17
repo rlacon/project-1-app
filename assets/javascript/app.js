@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
@@ -9,10 +10,12 @@ $(document).ready(function () {
         messagingSenderId: "474396693227",
         appId: "1:474396693227:web:f156b5abddd0080c"
       };
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     let database = firebase.database();
+
 
     //-------Save story content
 
@@ -20,10 +23,10 @@ $(document).ready(function () {
         let values = Object.values(genre)
         console.log(values);
         for (let value of values) {
-            $('#loop-info-1').text(values[0])
-            $('#loop-info-2').text(values[1])
-            $('#loop-info-3').text(values[2])
-            $('#loop-info-4').text(values[3])
+            $('#settingField').text(values[0])
+            $('#firstPlotPointField').text(values[1])
+            $('#midpointField').text(values[2])
+            $('#climaxField').text(values[3])
         }
     }
 
@@ -31,51 +34,36 @@ $(document).ready(function () {
         event.preventDefault();
         alert("Submit clicked");
         let story = $('#storyField').val().trim()
-        let setting = $('#loop-info-1').text();
-        let firstPlotPoint = $('#loop-info-2').text()
-        let midPoint = $('#loop-info-3').text()
-        let climax = $('#loop-info-4').text()
+        let setting = $('#settingField').val().trim()
+        let firstPlotPoint = $('#firstPlotPointField').val().trim()
+        let midPoint = $('#midpointField').val().trim()
+        let climax = $('#climaxField').val().trim()
         let day = moment().format("dddd")
         let wordCount = getWordCount(story)
-       
+
         database.ref().push({
             story: story,
             setting: setting,
             firstPlotPoint: firstPlotPoint,
             midPoint: midPoint,
             climax: climax,
-            wordCount: wordCount,
-            day: day
-
+            day: day,
+            wordCount: wordCount
         });
     })
 
-    database.ref().on('child_added', (snapshot) => {
-        let post = snapshot.val()
-        let newStory = post.story.slice(0,150)
-        
-        
-        $('#story1').text(newStory)
-        $('#day').text(post.day)
-        $('#wedBox').text(post.wordCount)
 
 
-    })
-
-
-
-   
     $('#day').text(moment().format('dddd'))
 
-    //$('#data').text(localStorage.getItem('wordcount'))
     getWordCount = (str) => {
         let regex = /\S+/g;
-        let found = str.match(regex);
-        return found.length
+        let found = str.match(regex)
+        return found
     }
-    
-   
-    
+
+
+
     //------Genre
     function getGenre(setting, plotOne, midPoint, climax) {
 
@@ -83,7 +71,7 @@ $(document).ready(function () {
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
-     
+
 
 
     }
@@ -98,20 +86,20 @@ $(document).ready(function () {
         'Think haunted mansion, cemetary, a lab where vile experiments are performed, small quiet towns, ghost towns',
         'The first act sets up the character or characters in question, usually something disturbing happens at some point to get the rest of the story going',
         'Tension building, confronting whatever supernatural entity or event has taken place, the characters should seem weak and vulnerable to whatever is happening',
-        'Final confrontation with source of horror that occurs in the story',)
+        'Final confrontation with source of horror that occurs in the story')
     let scifi = new getGenre(
-        'Think of a derelict spaceship, laboratory, anywhere with science vibes', 
+        'Think of a derelict spaceship, laboratory, anywhere with science vibes',
         'Character or characters are introduced, usually scientists, astronauts, explorers, roboticists',
         'Introduce a villain, mistake on the characters part that leads to an accident, AI going out of control etc',
-        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story',)
+        'Character deaths can occur at this point, or the final reveal of something previously unknown that is driving the action of the story')
     let mystery = new getGenre(
         'Think of a gathering among friends, law enforcement personell, a stranger who emerges suddenly from nowhere',
         'Introduction of either central character or several',
         'Event can occur at this point that is unexplainable, character\'s then seek to uncover the reason',
-        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light',)
-       
-      
-     
+        'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light')
+
+
+
     //   getActionPlot_1 = () => {
     //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
     //   return randomPlot
@@ -126,29 +114,27 @@ $(document).ready(function () {
     //-------Choose genre
 
     $('#action').on('click', () => {
-        //     $('#loop-info-1').text(getActionSetting())
-        //    $('#loop-info-2').text(getActionPlot_1())
         loop(action)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#horror').on('click', () => {
         loop(horror)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#scifi').on('click', () => {
         loop(scifi)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     $('#mystery').on('click', () => {
         loop(mystery)
         $('.mainContent').show();
-        $('nav').css('display', 'none');
+        $('.storyChoices').css('display', 'none');
     })
 
     //-------Ajax calls and events for Dictionary and Thesaurus

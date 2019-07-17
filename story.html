@@ -11,15 +11,25 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-  
-    
-    
 
 </head>
 
 <body>
-
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Write-haven</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="dashboard.html">Dashboard <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="story.html"> Text</a>
+            </div>
+        </div>
+    </nav>
+    <div class="storyChoices">
         <div class="d-flex flex-row justify-content-center">
 
             <div class="card text-center" style="width: 13rem;">
@@ -30,7 +40,6 @@
                 </div>
             </div>
 
-
             <div class="card text-center" style="width: 13rem;">
                 <div class="card-body">
                     <h5 class="card-title">Horror</h5>
@@ -38,8 +47,6 @@
                     <a href="#" class="btn btn-dark" id="horror">Choose Genre</a>
                 </div>
             </div>
-
-
 
             <div class="card text-center" style="width: 13rem;">
                 <div class="card-body">
@@ -49,7 +56,6 @@
                 </div>
             </div>
 
-
             <div class="card text-center" style="width: 13rem;">
                 <div class="card-body">
                     <h5 class="card-title">Mystery</h5>
@@ -58,9 +64,7 @@
                 </div>
             </div>
         </div>
-
-
-    </nav>
+    </div>
 
     <!-- Thesaurus definition area -->
     <div class="container mainContent" id="definethes">
@@ -74,13 +78,13 @@
     <!-- Thesaurus text field and Word Count -->
     <div class="container mainContent">
         <div class="row">
-            <div class="offset-3 col-7">
+            <div class="offset-3 col-xl-7 col-lg-7 col-md-8">
                 <form class="form-inline d-inline" id="formsubmit">
                     <input id="userThes" class="form-control sm-5" placeholder="Type in a word" type="text">
                     <button class="btn btn-dark" id="userT" type="submit">Use Thesaurus</button>
                 </form>
             </div>
-            <div class="col-2">
+            <div class="col-xl-2 col-lg-2 col-md-1">
                 <button id="storySubmit" class="btn btn-danger">Save</button>
             </div>
         </div>
@@ -95,30 +99,32 @@
                 <p><strong>Setting</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-1"></p>
+                        <textarea id="settingField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>First Plot Point</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-2"></p>
+                        <textarea id="firstPlotPointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>Midpoint</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-3"></p>
-
+                        <textarea id="midpointField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
 
                 <p><strong>Climax</strong></p>
                 <div class="card mb-3">
                     <div class="card-body text-primary">
-                        <p id="loop-info-4"></p>
-
+                        <textarea id="climaxField" name="message" class="form-control"
+                            placeholder="Outline text goes here" rows="6"></textarea>
                     </div>
                 </div>
             </div>

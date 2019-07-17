@@ -14,8 +14,6 @@ var firebaseConfig = {
 
 let database = firebase.database();
 
-
-
 /*
 getWordCount = (str) => {
     let regex = /\S+/g;
@@ -27,12 +25,8 @@ getWordCount = (str) => {
 
 */
 
-
-
-
-
 database.ref().on('child_added', function (snapshot) {
-
+    //Moment().format('dddd')
     let dayOfWeek = childSnapshot.val().day;
     let wordCount = childSnapshot.val().wordCount;
 
@@ -66,4 +60,3 @@ database.ref().on('child_added', function (snapshot) {
         $("#saturdayBox").text(prevCount += parseInt(wordCount));
     }
 })
-}
