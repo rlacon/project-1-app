@@ -7,13 +7,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project-1</title>
+    <title>DashBoard</title>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
 
     <!-- <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/word-count-chart.js"></script> -->
     <script src="assets/javascript/dashboard.js"></script>
+
 
 </head>
 
@@ -34,27 +39,33 @@
     </nav>
 
 
-    <div class="row">
-        <div class="col-sm-7">
-            <div class="jumbotron">
-                <h1 class="display-4">Good Morning, USERNAME!</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                    attention
-                    to
-                    featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.
-                </p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="story.html" role="button" id="start">Start writing!</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-sm 4">
-            <div class="row" id="quoteSection">
-            </div>
-            <a href="#" class="btn btn-primary" id="quotes-btn">New quote</a>
-        </div>
+
+
+
+<div class="row">
+       <div class="col-sm-7">
+           <div class="jumbotron">
+               <h1 class="display-4">Good Morning, USERNAME!</h1>
+               <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                   attention
+                   to
+                   featured content or information.</p>
+               <hr class="my-4">
+               <p>It uses utility classes for typography and spacing to space content out within the larger container.
+               </p>
+               <p class="lead">
+                   <a class="btn btn-primary btn-lg" href="#" role="button">Start writing!</a>
+               </p>
+           </div>
+       </div>
+       <div class="col-sm 4">
+          
+
+          <button class="btn btn-primary" id="quotes-btn">New Quote</button>
+          <h5 id="quoteSection"></h5>
+
+       </div>
+
     </div>
 
 
@@ -73,8 +84,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Writing 1</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Continue writing!</a>
+                        <p class="card-text" id="story1"></p>
+                        <a href="story.html" class="btn btn-primary">Continue writing!</a>
                     </div>
                 </div>
             </div>
@@ -112,20 +123,20 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Monday</th>
-                    <th scope="col">Tuesday</th>
-                    <th scope="col">Wednesday</th>
-                    <th scope="col">Thursday</th>
-                    <th scope="col">Friday</th>
-                    <th scope="col">Saturday</th>
-                    <th scope="col">Sunday</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" id="day"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row" id="mondayBox"></th>
-                    <td id="tuesdayBox"></td>
-                    <td id="wednesdayBox"></td>
+                    <td id="tueBox"></td>
+                    <td id="wedBox"></td>
                     <td id="thursdayBox"></td>
                     <td id="fridayBox"></td>
                     <td id="saturdayBox"></td>
@@ -134,6 +145,7 @@
             </tbody>
         </table>
     </div>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

@@ -1,18 +1,20 @@
 $(document).ready(function () {
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyABqAZU7UeVQ7nA16mkhFxcmjTSM9cXKJA",
-        authDomain: "dogwood-terra-183816.firebaseapp.com",
-        databaseURL: "https://dogwood-terra-183816.firebaseio.com",
-        projectId: "dogwood-terra-183816",
-        storageBucket: "dogwood-terra-183816.appspot.com",
-        messagingSenderId: "416717539320",
-        appId: "1:416717539320:web:5cabe2f014923c29"
-    };
+
+    let firebaseConfig = {
+        apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
+        authDomain: "writer-haven.firebaseapp.com",
+        databaseURL: "https://writer-haven.firebaseio.com",
+        projectId: "writer-haven",
+        storageBucket: "",
+        messagingSenderId: "474396693227",
+        appId: "1:474396693227:web:f156b5abddd0080c"
+      };
+
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var database = firebase.database();
+    let database = firebase.database();
 
 
     //-------Save story content
@@ -49,6 +51,8 @@ $(document).ready(function () {
             wordCount: wordCount
         });
     })
+
+
 
     $('#day').text(moment().format('dddd'))
 
@@ -163,6 +167,33 @@ $(document).ready(function () {
             //$('#wordThes').append(' :synonyms')
         })
     })
+    //Quote AJAX CALL
+    const queryURL = "https://favqs.com/api/qotd";
+   $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+       console.log(response);
+     
+       let quotes = $("<h2>").text(response.quote.body);
+       $("#quoteSection").empty();
+       $("#quoteSection").append(quotes);
+   });
+   $("#quotes-btn").on("click", function (event) {
+       event.preventDefault()
+      
+       $.ajax({
+           url: queryURL,
+           method: "GET"
+       }).then(function (response) {
+           
+          
+            var author = $('<h3>').text(response.quote.author).css('text-decoration', 'underline')
+            var quotes = $("<h2>").text(response.quote.body);
+           $("#quoteSection").empty();
+           $("#quoteSection").append(quotes);
+           $("#quoteSection").append(author)
 
-
+       })
+    })
 }) // End of jQuery ready()
