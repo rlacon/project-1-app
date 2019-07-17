@@ -177,7 +177,7 @@ $(document).ready(function () {
         let item = $('#userThes').val().trim().toLowerCase()
         let list = $('#thesaurus').css({ 'font-size': '16px' })
         $('#userThes').val('')
-        list.append('<li id=thes>' + item + '</li>').css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
+        list.append(`<li id=thes>  ${item}  </li>`).css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
         //$('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
         //$('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
         //$('#userThes').val('')
@@ -192,22 +192,22 @@ $(document).ready(function () {
 
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
-            $('#thes').append(': ' + thes.join(' , '))
+            $('#thes').append(`:  ${thes.join(' , ')}`)
 
             //$('#synonym').text(thes.join(' , '))
             //$('#wordThes').append(' :synonyms')
         })
     })
     //Quote AJAX CALL
-    var queryURL = "https://favqs.com/api/qotd";
+    var queryURL = "https://api.quotable.io/random";
    $.ajax({
        url: queryURL,
        method: "GET"
    }).then(function (response) {
        console.log(response);
      
-       let quotes = $("<h2>").text(response.quote.body);
-       let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
+       let quotes = $("<h2>").text(response.content);
+       let author = $("<h3>").text(response.author).css('text-decoration', 'underline')
        $("#quoteSection").empty();
        $("#quoteSection").append(quotes);
        $('#quoteSection').append(author);
