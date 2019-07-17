@@ -33,7 +33,7 @@ $(document).ready(function () {
     $('#storySubmit').on('click', () => {
         
         event.preventDefault();
-        alert("Submit clicked");
+        alert("Story saved!");
         let story = $('#storyField').val().trim()
         let setting = $('#settingField').val().trim()
         let firstPlotPoint = $('#firstPlotPointField').val().trim()
