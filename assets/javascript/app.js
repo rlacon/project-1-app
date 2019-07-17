@@ -31,6 +31,7 @@ $(document).ready(function () {
     }
 
     $('#storySubmit').on('click', () => {
+        
         event.preventDefault();
         alert("Submit clicked");
         let story = $('#storyField').val().trim()
@@ -52,14 +53,24 @@ $(document).ready(function () {
         });
     })
 
+    database.ref().on('child_added', (snapshot) => {
+        let post = snapshot.val()
+        let newStory = post.story.slice(0,150)
+    
+
+        $('#story1').text(newStory)
+        $('#day').text(post.day)
+        $('#wedBox').text(post.wordCount)
 
 
-    $('#day').text(moment().format('dddd'))
+    })
 
+
+  
     getWordCount = (str) => {
         let regex = /\S+/g;
         let found = str.match(regex)
-        return found
+        return found.length
     }
 
 
@@ -176,24 +187,10 @@ $(document).ready(function () {
        console.log(response);
      
        let quotes = $("<h2>").text(response.quote.body);
+       let author = $("<h3>").text(response.quote.author).css('text-decoration', 'underline')
        $("#quoteSection").empty();
        $("#quoteSection").append(quotes);
+       $('#quoteSection').append(author);
    });
-   $("#quotes-btn").on("click", function (event) {
-       event.preventDefault()
-      
-       $.ajax({
-           url: queryURL,
-           method: "GET"
-       }).then(function (response) {
-           
-          
-            var author = $('<h3>').text(response.quote.author).css('text-decoration', 'underline')
-            var quotes = $("<h2>").text(response.quote.body);
-           $("#quoteSection").empty();
-           $("#quoteSection").append(quotes);
-           $("#quoteSection").append(author)
-
-       })
-    })
+   
 }) // End of jQuery ready()
