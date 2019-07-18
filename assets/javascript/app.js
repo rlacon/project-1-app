@@ -205,7 +205,7 @@ $(document).ready(function () {
    }).then(function (response) {
        console.log(response);
      
-       let quotes = $("<h2>").text(response.content);
+       let quotes = $("<h6>").text(response.content);
        let author = $("<h3>").text(response.author).css('text-decoration', 'underline')
        $("#quoteSection").empty();
        $("#quoteSection").append(quotes);
