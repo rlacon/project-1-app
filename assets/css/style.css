@@ -8,10 +8,6 @@ nav {
     padding-bottom: 4em;
 }
 
-.background {
-    background-color: white;
-}
-
 /* --------------- Text Elements --------------- */
 
 h1 {
@@ -31,7 +27,6 @@ h3 {
     margin-top: 1em;
     color: #5E6773;
     font-family: 'Literata', serif;
-
 }
 
 h6 {
@@ -245,6 +240,10 @@ ul {
     .mainContent {
         margin-bottom: .5em;
     }
+    #storyField {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -264,5 +263,4 @@ ul {
     .navbar-brand {
         padding-left: 0px;
     }
-    
 }

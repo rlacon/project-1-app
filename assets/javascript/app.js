@@ -98,7 +98,7 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        alert("Story saved!");
+        alert("Story Saved!");
         let story = $('#storyField').val().trim()
 
         let setting = $('#settingField').val().trim()
