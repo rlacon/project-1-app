@@ -26,6 +26,7 @@ $(document).ready(function () {
             $('#firstPlotPointField').text(values[1])
             $('#midpointField').text(values[2])
             $('#climaxField').text(values[3])
+            console.log(value)
         }
     }
 
@@ -58,8 +59,8 @@ $(document).ready(function () {
 
 
         $('#story1').text(newStory);
-        $('#dayBox3').text(post.wordCount + " words") ;
-        $('#Wednesday').text(post.day);
+        
+        
         $('#storyField').text(post.story);
 
             let dayOfWeek = snapshot.val().day;
@@ -67,19 +68,19 @@ $(document).ready(function () {
 
             switch (dayOfWeek) {
                 case 'Monday':
-                   return $('#day1').text(wordCount);
+                   return $('#dayBox1').text(wordCount);
                 case 'Tuesday':
-                   return $('#day2').text(wordCount);
+                   return $('#dayBox2').text(wordCount);
                 case 'Wednesday':
-                    return $('#day3').text(wordCount);
+                    return $('#dayBox3').text(wordCount);
                 case 'Thursday':
-                    return $('#day4').text(wordCount);
+                    return $('#dayBox4').text(wordCount);
                 case 'Friday':
-                    return $('#day5').text(wordCount);
+                    return $('#dayBox5').text(wordCount);
                 case 'Saturday':
-                    return $('#day6').text(wordCount);
+                    return $('#dayBox6').text(wordCount);
                 case 'Sunday':
-                    return $('#day7').text(wordCount);
+                    return $('#dayBox7').text(wordCount);
             }
 
     })
@@ -205,7 +206,7 @@ $(document).ready(function () {
    }).then(function (response) {
        console.log(response);
      
-       let quotes = $("<h2>").text(response.content);
+       let quotes = $("<h6>").text(response.content);
        let author = $("<h3>").text(response.author).css('text-decoration', 'underline')
        $("#quoteSection").empty();
        $("#quoteSection").append(quotes);
