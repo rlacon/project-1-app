@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    
     let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
@@ -30,18 +30,26 @@ $(document).ready(function () {
         }
     }
 
-    $('#storySubmit').on('click', () => {
+    
+    
+    $('#firststory').hide()
 
+
+  
+    $('#storySubmit').on('click', () => {
+       
         event.preventDefault();
+
         alert("Story saved!");
         let story = $('#storyField').val().trim()
+       
         let setting = $('#settingField').val().trim()
         let firstPlotPoint = $('#firstPlotPointField').val().trim()
         let midPoint = $('#midpointField').val().trim()
         let climax = $('#climaxField').val().trim()
         let day = moment().format("dddd")
         let wordCount = getWordCount(story)
-
+        
         database.ref().push({
             story: story,
             setting: setting,
@@ -56,9 +64,12 @@ $(document).ready(function () {
     database.ref().on('child_added', (snapshot) => {
         let post = snapshot.val()
         let newStory = post.story.slice(0, 150) + "..."
+        console.log(typeof(post))
+        console.log(typeof(post.story))
 
-
-        $('#story1').text(newStory);
+        post === null ? $('#firststory').hide() : $('#firststory').show()
+        
+        $('#story').text(newStory);
         
         
         $('#storyField').text(post.story);
@@ -68,19 +79,19 @@ $(document).ready(function () {
 
             switch (dayOfWeek) {
                 case 'Monday':
-                   return $('#dayBox1').text(wordCount);
+                   return $('#dayBox1').text(`${wordCount} words`);
                 case 'Tuesday':
-                   return $('#dayBox2').text(wordCount);
+                   return $('#dayBox2').text(`${wordCount} words`);
                 case 'Wednesday':
-                    return $('#dayBox3').text(wordCount);
+                    return $('#dayBox3').text(`${wordCount} words`);
                 case 'Thursday':
-                    return $('#dayBox4').text(wordCount);
+                    return $('#dayBox4').text(`${wordCount} words`);
                 case 'Friday':
-                    return $('#dayBox5').text(wordCount);
+                    return $('#dayBox5').text(`${wordCount} words`);
                 case 'Saturday':
-                    return $('#dayBox6').text(wordCount);
+                    return $('#dayBox6').text(`${wordCount} words`);
                 case 'Sunday':
-                    return $('#dayBox7').text(wordCount);
+                    return $('#dayBox7').text(`${wordCount} words`);
             }
 
     })
@@ -207,7 +218,7 @@ $(document).ready(function () {
        console.log(response);
      
        let quotes = $("<h6>").text(response.content);
-       let author = $("<h3>").text(response.author).css('text-decoration', 'underline')
+       let author = $("<h3>").text(response.author)
        $("#quoteSection").empty();
        $("#quoteSection").append(quotes);
        $('#quoteSection').append(author);
