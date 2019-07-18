@@ -60,7 +60,7 @@ $(document).ready(function () {
             wordCount: wordCount
         });
     })
-
+ 
     database.ref().on('child_added', (snapshot) => {
         let post = snapshot.val()
         let newStory = post.story.slice(0, 150) + "..."
@@ -68,7 +68,7 @@ $(document).ready(function () {
         console.log(typeof(post.story))
 
         post === null ? $('#firststory').hide() : $('#firststory').show()
-        
+       
         $('#story').text(newStory);
         
         
@@ -152,31 +152,30 @@ $(document).ready(function () {
     //     return randomSetting
     //}
 
-
+    
     //-------Choose genre
-
+  let showHide = () => {
+      $('.mainContent').show()
+      $('.storyChoices').hide()
+  }
     $('#action').on('click', () => {
         loop(action)
-        $('.mainContent').show();
-        $('.storyChoices').css('display', 'none');
+        showHide()
     })
 
     $('#horror').on('click', () => {
         loop(horror)
-        $('.mainContent').show();
-        $('.storyChoices').css('display', 'none');
+        showHide()
     })
 
     $('#scifi').on('click', () => {
         loop(scifi)
-        $('.mainContent').show();
-        $('.storyChoices').css('display', 'none');
+        showHide()
     })
 
     $('#mystery').on('click', () => {
         loop(mystery)
-        $('.mainContent').show();
-        $('.storyChoices').css('display', 'none');
+        showHide()
     })
 
     //-------Ajax calls and events for Dictionary and Thesaurus
