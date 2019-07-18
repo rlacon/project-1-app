@@ -16,30 +16,30 @@ nav {
 
 h1 {
     color: #162C4A;
+    font-family: 'Literata', serif;
+    font-weight: normal;
 }
 
 h2 {
     color: #162C4A;
+    font-family: 'Literata', serif;
 }
 
 h3 {
     font-size: 18px;
     font-weight: none;
     margin-top: 1em;
-    font-weight: normal;
-    color: #162C4A;
-}
-
-.h6 {
     color: #5E6773;
+    font-family: 'Literata', serif;
+
 }
 
 h6 {
-    font-weight: none;
-    font-style: italic;
     font-size: 18px;
     line-height: 1.8em;
     color: #5E6773;
+    font-family: 'Literata', serif;
+    font-style: italic;
 }
 
 p {
@@ -62,11 +62,16 @@ ul {
 .navbar-brand {
     padding-left: 25px;
     padding-top: 0rem;
+    font-family: 'Literata', serif;
 }
 
 .navbar-nav {
     color: white;
-    padding-left: 25px;
+    padding-left: 15px;
+}
+
+.nav-item {
+    margin-left: 15px;
 }
 
 #storyField {
