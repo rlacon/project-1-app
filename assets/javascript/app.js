@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     let firebaseConfig = {
         apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
         authDomain: "writer-haven.firebaseapp.com",
@@ -13,109 +13,17 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    let database = firebase.database();
-
-
-    //-------Save story content
-
-    loop = (genre) => {
-        let values = Object.values(genre)
-        console.log(values);
-        for (let value of values) {
-            $('#settingField').text(values[0])
-            $('#firstPlotPointField').text(values[1])
-            $('#midpointField').text(values[2])
-            $('#climaxField').text(values[3])
-            console.log(value)
-        }
-    }
-
-    
-    
+    const database = firebase.database();
+    //Hides firststory if no content is present in the database
     $('#firststory').hide()
 
-
-  
-    $('#storySubmit').on('click', () => {
-       
-        event.preventDefault();
-
-        alert("Story saved!");
-        let story = $('#storyField').val().trim()
-       
-        let setting = $('#settingField').val().trim()
-        let firstPlotPoint = $('#firstPlotPointField').val().trim()
-        let midPoint = $('#midpointField').val().trim()
-        let climax = $('#climaxField').val().trim()
-        let day = moment().format("dddd")
-        let wordCount = getWordCount(story)
-        
-        database.ref().push({
-            story: story,
-            setting: setting,
-            firstPlotPoint: firstPlotPoint,
-            midPoint: midPoint,
-            climax: climax,
-            day: day,
-            wordCount: wordCount
-        });
-    })
- 
-    database.ref().on('child_added', (snapshot) => {
-        let post = snapshot.val()
-        let newStory = post.story.slice(0, 150) + "..."
-        console.log(typeof(post))
-        console.log(typeof(post.story))
-
-        post === null ? $('#firststory').hide() : $('#firststory').show()
-       
-        $('#story').text(newStory);
-        
-        
-        $('#storyField').text(post.story);
-
-            let dayOfWeek = snapshot.val().day;
-            let wordCount = snapshot.val().wordCount;
-
-            switch (dayOfWeek) {
-                case 'Monday':
-                   return $('#dayBox1').text(`${wordCount} words`);
-                case 'Tuesday':
-                   return $('#dayBox2').text(`${wordCount} words`);
-                case 'Wednesday':
-                    return $('#dayBox3').text(`${wordCount} words`);
-                case 'Thursday':
-                    return $('#dayBox4').text(`${wordCount} words`);
-                case 'Friday':
-                    return $('#dayBox5').text(`${wordCount} words`);
-                case 'Saturday':
-                    return $('#dayBox6').text(`${wordCount} words`);
-                case 'Sunday':
-                    return $('#dayBox7').text(`${wordCount} words`);
-            }
-
-    })
-
-
-
-    getWordCount = (str) => {
-        let regex = /\S+/g;
-        let found = str.match(regex)
-        return found.length
-    }
-
-
-
-    //------Genre
+    //-------Save story content
     function getGenre(setting, plotOne, midPoint, climax) {
 
         this.setting = setting;
         this.plotOne = plotOne;
         this.midPoint = midPoint;
         this.climax = climax;
-
-
-
     }
 
     //These objects are converted into arrays.
@@ -140,46 +48,116 @@ $(document).ready(function () {
         'Event can occur at this point that is unexplainable, character\'s then seek to uncover the reason',
         'Tension comes to an end here with the reason for whatever events you decided to unleash comes to light')
 
+    //Pulls content from genre object and populates story cards
+    const getContent = (genre) => {
+        $('#settingField').text(genre.setting)
+        $('#firstPlotPointField').text(genre.plotOne)
+        $('#midpointField').text(genre.midPoint)
+        $('#climaxField').text(genre.climax)
+    }
 
-
-    //   getActionPlot_1 = () => {
-    //    let randomPlot = action.plotOne[Math.floor(Math.random() * action.plotOne.length)]
-    //   return randomPlot
-
-    //   }
-    //   getActionSetting = () => {
-    //     let randomSetting = action.setting[Math.floor(Math.random() * action.setting.length)]
-    //     return randomSetting
-    //}
-
-    
-    //-------Choose genre
-  let showHide = () => {
-      $('.mainContent').show()
-      $('.storyChoices').hide()
-  }
+//Hides genre selection after they are clicked, displays story writing tools.
+    let showHide = () => {
+        $('.mainContent').show()
+        $('.storyChoices').hide()
+    }
     $('#action').on('click', () => {
-        loop(action)
+        getContent(action)
         showHide()
     })
 
     $('#horror').on('click', () => {
-        loop(horror)
+        getContent(horror)
         showHide()
     })
 
     $('#scifi').on('click', () => {
-        loop(scifi)
+        getContent(scifi)
         showHide()
     })
 
     $('#mystery').on('click', () => {
-        loop(mystery)
+        getContent(mystery)
         showHide()
     })
 
-    //-------Ajax calls and events for Dictionary and Thesaurus
 
+
+
+
+    
+//Regex expression to capture word count.
+    getWordCount = (str) => {
+        let regex = /\S+/g;
+        let found = str.match(regex)
+        return found.length
+    }
+
+//Saves whatever the user has written in the text box along with the structure(first point midpoint etc) saved to database
+    $('#storySubmit').on('click', () => {
+
+        event.preventDefault();
+
+        alert("Story saved!");
+        let story = $('#storyField').val().trim()
+
+        let setting = $('#settingField').val().trim()
+        let firstPlotPoint = $('#firstPlotPointField').val().trim()
+        let midPoint = $('#midpointField').val().trim()
+        let climax = $('#climaxField').val().trim()
+        let day = moment().format("dddd")
+        let wordCount = getWordCount(story)
+
+        database.ref().push({
+            story: story,
+            setting: setting,
+            firstPlotPoint: firstPlotPoint,
+            midPoint: midPoint,
+            climax: climax,
+            day: day,
+            wordCount: wordCount
+        });
+    })
+
+    database.ref().on('child_added', (snapshot) => {
+        let post = snapshot.val()
+        let newStory = post.story.slice(0, 150) + "..."
+        console.log(typeof (post))
+        console.log(typeof (post.story))
+        //If there is content in the database, show the firststory element
+        post === null ? $('#firststory').hide() : $('#firststory').show()
+
+        $('#story').text(newStory);
+
+
+        $('#storyField').text(post.story);
+
+        let dayOfWeek = snapshot.val().day;
+        let wordCount = snapshot.val().wordCount;
+        //Pulls the day of the week from the database and compares it to the day in the table.
+        switch (dayOfWeek) {
+            case 'Monday':
+                return $('#dayBox1').text(`${wordCount} words`);
+            case 'Tuesday':
+                return $('#dayBox2').text(`${wordCount} words`);
+            case 'Wednesday':
+                return $('#dayBox3').text(`${wordCount} words`);
+            case 'Thursday':
+                return $('#dayBox4').text(`${wordCount} words`);
+            case 'Friday':
+                return $('#dayBox5').text(`${wordCount} words`);
+            case 'Saturday':
+                return $('#dayBox6').text(`${wordCount} words`);
+            case 'Sunday':
+                return $('#dayBox7').text(`${wordCount} words`);
+        }
+
+    })
+
+
+
+
+//Ajax call for thesaurus
     $('#userT').on('click', () => {
         event.preventDefault();
         $('#thesaurus').empty();
@@ -188,9 +166,7 @@ $(document).ready(function () {
         let list = $('#thesaurus').css({ 'font-size': '16px' })
         $('#userThes').val('')
         list.append(`<li id=thes>  ${item}  </li>`).css({ 'padding-right': '0px', 'font-size': '16px', 'list-style': 'none', 'text-align': 'left' })
-        //$('#definethes').append('<p class=border border-success id=synonym><strong></strong></p>')
-        //$('#synonym').before('<h3 id=wordThes>' + userThes + '</h3>')
-        //$('#userThes').val('')
+        
 
         let query_2 = "https://dictionaryapi.com/api/v3/references/thesaurus/json/" + item + "?&key=16c11365-c317-4d39-aa7c-62632093e7ef"
 
@@ -204,23 +180,22 @@ $(document).ready(function () {
             console.log(thes)
             $('#thes').append(`:  ${thes.join(' , ')}`)
 
-            //$('#synonym').text(thes.join(' , '))
-            //$('#wordThes').append(' :synonyms')
+            
         })
     })
     //Quote AJAX CALL
     var queryURL = "https://api.quotable.io/random";
-   $.ajax({
-       url: queryURL,
-       method: "GET"
-   }).then(function (response) {
-       console.log(response);
-     
-       let quotes = $("<h6>").text(response.content);
-       let author = $("<h3>").text(response.author)
-       $("#quoteSection").empty();
-       $("#quoteSection").append(quotes);
-       $('#quoteSection').append(author);
-   });
-   
-}) // End of jQuery ready()
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+
+        let quotes = $("<h6>").text(response.content);
+        let author = $("<h3>").text(response.author)
+        $("#quoteSection").empty();
+        $("#quoteSection").append(quotes);
+        $('#quoteSection').append(author);
+    });
+
+}) 
