@@ -60,7 +60,7 @@ $(document).ready(function () {
             wordCount: wordCount
         });
     })
-    $('.storyChoices').hide()
+ 
     database.ref().on('child_added', (snapshot) => {
         let post = snapshot.val()
         let newStory = post.story.slice(0, 150) + "..."
@@ -152,7 +152,7 @@ $(document).ready(function () {
     //     return randomSetting
     //}
 
-
+    
     //-------Choose genre
   let showHide = () => {
       $('.mainContent').show()
