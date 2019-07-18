@@ -46,6 +46,15 @@ p {
     line-height: 1.8em;
 }
 
+.outlineHeadline {
+    padding-top: 2rem;
+    padding-bottom: 0px;
+}
+
+#outlineHeadline1 {
+    padding-top: 0px;
+}
+
 a {
     text-decoration: none;
 }
@@ -75,7 +84,7 @@ ul {
 }
 
 #storyField {
-    height: 863px;
+    height: 904px;
     flex-grow: 1;
     display: flex;
 }
@@ -137,7 +146,7 @@ ul {
 
 .card {
     margin-top: 1em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     border: solid #E4E6EA 2px;
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
 }
@@ -186,7 +195,6 @@ ul {
 }
 
 .quoteContainer {
-    overflow: scroll;
     height: 341px;
 }
 
@@ -196,6 +204,10 @@ ul {
 
 .storyChoices {
     margin-top: 2em;
+}
+
+.table .thead-dark th {
+    width: 14%;
 }
 
 /* --------------- Media Queries --------------- */
@@ -217,6 +229,9 @@ ul {
     }
     .quoteContainer {
         display: none;
+    }
+    .jumbotron {
+        padding-left: 0rem;
     }
 }
 
@@ -246,7 +261,8 @@ ul {
     .mainContent {
         margin-bottom: .5em;
     }
-    .jumbotron {
-        padding: 3rem;
+    .navbar-brand {
+        padding-left: 0px;
     }
+    
 }
