@@ -219,12 +219,12 @@ ul {
     .mainContent {
         margin-bottom: 1em;
     }
-    #quoteSection {
-        display: none;
-    }
     .quoteContainer {
-        display: none;
+        height: auto;
+        margin-left: 15px;
+        padding-top: 0px;
     }
+    
     .jumbotron {
         padding-left: 0rem;
     }
