@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
-    let firebaseConfig = {
-        apiKey: "AIzaSyCbygKsxIHGt2vS_7yQXIzlxIuri_EGZtc",
-        authDomain: "writer-haven.firebaseapp.com",
-        databaseURL: "https://writer-haven.firebaseio.com",
-        projectId: "writer-haven",
+    var firebaseConfig = {
+        apiKey: "AIzaSyDoqpbR_9Fx_d72Gylbx7U4YhVkt7xG8TA",
+        authDomain: "writehaven-d4cdf.firebaseapp.com",
+        databaseURL: "https://writehaven-d4cdf.firebaseio.com",
+        projectId: "writehaven-d4cdf",
         storageBucket: "",
-        messagingSenderId: "474396693227",
-        appId: "1:474396693227:web:f156b5abddd0080c"
-    };
+        messagingSenderId: "892034757404",
+        appId: "1:892034757404:web:cf80449495d59e83"
+      };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
