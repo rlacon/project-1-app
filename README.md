@@ -26,3 +26,9 @@ A app for those who wish to write their own stories, with a little guidance. Thi
 * As a user, I want to save a draft of my story and keep writing later.
     1. Upon clicking a genre button, a new story is created and populates to the dashboard.
     2. Clicking the save button will store the data in the user's local storage, and the story can be accessed again by clicking it on the dashboard. 
+
+* MORE INFO:
+
+Write Haven is a group project I worked on with three other classmates in my coding boot camp. This writing application will help beginner writers overcome the hurdles of writer's block. The app does this by providing outline options to assist with idea generation and educate them on core literary elements. 
+
+The user can save the progress of their story by clicking save, which will store the text snippets on Firebase so they can return to the story later. Clicking the save button also extracts the number of words the user has typed in that session and using Moment.js logic, stores the total word count in the Writing Stats table on the dashboard. It uses two APIs to benefit the writing experience— Quotable and Thesaurus. The quote API provides a new inspirational quote every time the reader clicks refresh, and the thesaurus provides synonyms for a word that gets entered in the text box.

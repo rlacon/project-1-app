@@ -8,7 +8,7 @@ $(document).ready(function () {
         storageBucket: "",
         messagingSenderId: "892034757404",
         appId: "1:892034757404:web:cf80449495d59e83"
-      };
+    };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -81,11 +81,6 @@ $(document).ready(function () {
         showHide()
     })
 
-
-
-
-
-    
 //Regex expression to capture word count.
     getWordCount = (str) => {
         let regex = /\S+/g;
@@ -129,7 +124,6 @@ $(document).ready(function () {
 
         $('#story').text(newStory);
 
-
         $('#storyField').text(post.story);
 
         let dayOfWeek = snapshot.val().day;
@@ -151,10 +145,7 @@ $(document).ready(function () {
             case 'Sunday':
                 return $('#dayBox7').text(`${wordCount} words`);
         }
-
     })
-
-
 
 
 //Ajax call for thesaurus
@@ -179,10 +170,9 @@ $(document).ready(function () {
             let thes = response[0].meta.syns[0].map(item => item)
             console.log(thes)
             $('#thes').append(`:  ${thes.join(' , ')}`)
-
-            
         })
     })
+
     //Quote AJAX CALL
     var queryURL = "https://api.quotable.io/random";
     $.ajax({
